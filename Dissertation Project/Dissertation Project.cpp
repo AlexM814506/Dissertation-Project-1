@@ -1533,7 +1533,7 @@ void bossloop()
 		lineBreak(1);
 		if (varias.MP >= 5)
 		{
-			cout << "Light deals damage to the enemy!" << endl;
+			cout << "Light deals damage to Jarl!" << endl;
 			TE.minusX(TE.HP, 10 + varias.MAG);
 			varias.minusX(varias.MP, 5);
 			cout << "You have " << varias.MP << " MP left!" << endl;
@@ -1605,6 +1605,9 @@ void bossloop()
 				else //IF YOU'RE BEEFY ENOUGH, TAKE NO DMG
 				{
 					cout << "Your armor holds strong, and you take no damage!" << endl;
+					Sleep(500);
+					cout << "Your armor weakens as it takes the brunt of the attack." << endl;
+					varias.minusX(varias.DEF, 1);
 				}
 			}
 			break;
