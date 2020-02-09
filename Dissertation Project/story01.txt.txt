@@ -1,0 +1,111 @@
+	OPENING (2-10) ====================================================================================
+'Welcome back,' the King greets you with an easy smile as you enter the court, the guards merely giving you a cursory glance before they let you pass.
+Your reputation precedes you, as close friend of the King's, and one of the Empire's up-and-coming knights.
+Kneeling before the monarch, you crack a smile; it's only been a few months since his coronation.
+The new King seems to be fit for the role.
+In fact, you left for your last quest only a few weeks after the coronation, so you've hardly had any time to see him at work.
+The King seems to catch your sentiment. 'Unfortunately, you have no time to rest.' He begins, and your heart sinks.
+'In fact, I don't even have time to knight you for your successes.'
+Another tough pill to swallow. All that trouble in the Southern Fens was for nothing.
+You raise your head in question, and the King continues. 'You have a new quest.'
+	OPENING 2(11-21)=======================================================================================
+'My quest, my lord?' You have to force yourself to remember to add the honorific.
+The King doesn't  seem to mind. 'A great many things has happened in your vacancy,'
+You're almost ready for a lecture, but the tone in the King's voice tells you this is urgent.
+'One of those things being the dissapearance of your apprentice, Ser Jarl.' You're sick to your stomach.
+As you stand to press the King for answers, he raises his hand to quell your anger.
+'I understand your confusion.' The King's voice is as calm and considered as ever.
+You are almost worried by his blank expression - wasn't Jarl his friend, too?
+'We have reason to believe Jarl has been taken east, to the edges of our Kingdom.' Standing, the King leaves his throne.
+He approaches the great World Map that decorates the floor of the throne room, pointing to the east of the Empire with his cane.
+'If he is taken outside of the border, I will not be able to protect you.' The King turns serious.
+'In the case that you are unable to catch up, return at once.' He insists, and you can't help but wonder what is going on.
+	OPENING 3(23-28)===================================================================================================
+Packing light, you bring only the necessities. The King's orders were to leave at once, and you couldn't agree more.
+Your sword comes too, but it is battered from the dirty work in the Southern Fens - a new one would be useful.
+Setting out, the first major obstacle in your path is a shortcut through Gamor's Cave, a den of demi-humans that prey on travellers.
+You decide to make the risky shortcut through the cave, and use lethal force if necessary.
+Well, you suppose they've had this coming for a while.
+	ENTERING CAVE(30-32)===================================================================================
+As you expected, Gamor's Cave isn't a pleasant place. Demi-humans are mostly nocturnal, so it's almost pitch black.
+You figure that if they're nocturnal, you might be able to sneak through undetected. Perhaps you could find some treasure, too?
+You shake your head; you've got to hurry, to save Ser Jarl, right?
+	EXIT CAVE(34-39)=======================================================================================
+You've been in that dank, smelly cave for almost an hour now, so the clean air smells like the finest of sweets.
+Your sword has only grown duller from the fights you had down in the cave.
+You can hardly use it to chop apart the greenery, now...
+Pushing apart some branches, you find yourself in an open field, a forest a few miles ahead.
+Looming behind those trees is the Grand Line, the mountain range that exists as the formal border between the Empire and it's neighbour.
+You imagine that that is where Jarl's captors are aiming for. You've caught up, but the chase continues.
+	LORE 1(41-48)===========================================================================================
+Searching through the cave, you come along what might be considered a 'bedroom'. A 'dorm', at least.
+There are piles of trash everywhere, both stolen goods and random garbage.
+But, your eyes catch on a book.
+Your curiosity gets the best of you, and you flip it open.
+From the dates scrawled at the top of each page, you assume it's a diary. One written in Guinese.
+You can't read Giunese, but you can recognise it; because everything in the south is written in it.
+Whoever is living in these caves, they must've had a role in the Southern Fens.
+You grin, telling yourself they were lucky to miss you.
+	LORE 2(50-52)===========================================================================================
+Kicking apart a few crates in your way, you discover something familiar drop from the detritus that falls out.
+It's the sheath for Jarl's sword! Picking it up, you carefully stash it away.
+So, the King wasn't just sending you on a wild-goose chase. With renewed fervour, you hurry on.
+	LORE 3(54-59)===========================================================================================
+Attracted by a sickly-sweet smell, you approach a large chamber.
+No enemies, thankfully, but stacks upon stacks of crates. The smell is getting overwhelming.
+Prying one open carefully, you brace yourself for whatever might be in there.
+Mysteriously, you find a stash of myneberries. These kind of berries are only grown in the far south.
+In fact, not far from where you were working in the Fens. You take a moment to wonder how they got here.
+And then, of course, take one for yourself. Nothing wrong with a snack.
+	BOSS - BANDIT(61-65)=========================================================================================
+Arriving at the forest, you come across a small campfire; it's fresh.
+Kicking about the ashes and looking for a way to track your change, you hear a voice behind you.
+'Ah, crud...' Turning to face them, you see a dishevelled man with a poison-laced sword.
+'This is what I get for wakin' up late...' He grumbles, levelling his blade at you.
+You respond in kind.
+	ENTER FOREST(67-72)====================================================================================
+The bandit falls to the floor with a wet thunk, face-down in the mud.
+You realise you should have questioned him, shouldn't you?
+The time spent dragging questions out of him would be time wasted on catching up, though.
+No use beating yourself up, though; the forest looms up, the trees a great deal larger than you remember.
+Glancing at your sword, you find it's started to chip.
+This might be tough.
+	EXIT FOREST(74-80)==========================================================================================
+The forest's canopy has grown so thick you can hardly see a few feet ahead.
+You must have caught it in a bad mood.
+Fortunately, though, a shaft of light breaks through, and illuminates the exit.
+Hurrying through, you kick apart the shrubbery and burst, gasping, into the open air.
+As expected, the Grand Line mountain range hangs above.
+If you squint, you can see a group of people moving through the crags.
+Wiping your blade clean, blood and goop sloshes onto the floor. You prepare yourself for the climb.
+	EAGLE ENCOUNTER(82-87)====================================================================================
+The figures above are assaulted by a gigantic eagle; the protector of this flank of the Grand Line.
+You curse as you look about for a hiding spot. The party is fortunate, dashing inside a nearby ruin.
+You, however, not so much. After clawing at the entrance to the ruins for a moment, the eagle gives up.
+And looks down at you.
+You scramble onto a sturdy-enough ledge, and draw your sword.
+There isn't much room to swing your sword - perhaps some magic would work against this beast.
+	LORE 4(89-94) ============================================================================================
+You're quickly realising this forest isn't very fun. Hardly a forest, and more like a jungle.
+Fortunately, you can use the brush to hide from some of the less pleasant enemies.
+One of these such enemies is another bandit from the camp you just passed, trudging through the undergrowth just like you.
+'Damn, this place stinks...' he mutters, his accent identical to the last bandit you encountered.
+'That ruddy Jarl doesn't wait for anyone, does he? I'll stick his ass if I see 'im again'
+Your brow creases, and the bandit dissapears before you can work up the courage to accost him.
+	LORE 5(96-100) ============================================================================================
+Barely missing the eyes of a Beastman, you duck under a nearby shrub and cover your mouth.
+Beastmen are attuned to heat-levels, so you can only thank the stars that it's so awfully hot today.
+Regardless, you can't help but wonder why a Beastman would be in this neck of the Empire.
+Every year, they migrate from the warmer south to the north, to escape the heat, but this is far too early.
+It seems, ever since your mission in the Fens, everyone has lost their mind.
+	LORE 6(102-106)============================================================================================
+You're trudging through a lighter patch of overgrowth when you catch something out of the corner of your eye.
+A large fruit, ripe and about to drop from a tree. You must have forgotten the season thanks to your busy schedule.
+Early Autumn; the forest's fruit must just have been harvested by hungry travellers. You're lucky to find one left over.
+You don't want to stop - you have important business - but when the fruit drops straight from the branch, you can't help but catch it.
+A lucky break, a nice change of pace from the rest of this awful forest.
+	LORE 7 (108-111)============================================================================================
+You can feel from the fresher air that the forest is thinning out. Ahead, the Grand Line awaits.
+You try to remember the last time you were there. It's the fastest route to the Western Kingdom, but...
+It's not reccomended. The place is surrounded by rumors, mythos and bad omens.
+Considering that the forest is this riled up, for some terrible reason, you only imagine the Grand Line will be worse.

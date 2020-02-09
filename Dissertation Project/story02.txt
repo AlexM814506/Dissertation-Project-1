@@ -1,0 +1,88 @@
+	EAGLE BEAT, ENTER RUINED CASTLE(2-7)========================================================================
+The Great Eagle chokes, freezes up, and slowly drops onto the mountainside.
+You can hear the awful noises it makes as it tumbles off the rocks.
+You don't have time to mourn; the bandits must still be moving.
+Scrambling back up the rockside, the ruins the bandits took refuge inside of isn't too far away.
+You make it inside after a few minutes, and take a breath outside.
+They're trapped like rats in a barrel, now - time to strike.
+	LORE 1(9-13)==========================================================================================================
+You quickly find that there is something deathly wrong with these ruins.
+There is a fell presence about, and many of the bandits have already been killed by the demons.
+There is only one set of ruins along the Grand Line possessed by demons.
+Your stomach sinks as you realise that you are in it. If Jarl is in here, too, you have even less time.
+Someone must have summoned this demonic host, though, right? There is no time to make guesses, though.
+	LORE 2(15, 19)==========================================================================================================
+Dread fills your mind as you realise that this is no minor 'summoning'. Whoever has conjured this demon host is serious.
+They haven't just brought a few demons over, they've opened the gates. Demons will continue to pour out, until they are stopped.
+You are beginning to realise why the King adressed you with such a dire expression.
+If this was their goal from the start, then stopping them now was all the more vital.
+If the summoner continues to hold the door open for these monsters, the Empire will be overrun.
+	LORE 3(21-26)==========================================================================================================
+You spot an encampment of bandits, holed out to protect from the demon infestation. For now, you can listen in.
+'Fuck, this wasn't in the plan, was it?' One has his head in his hands, his blade covered in the familiar demon-blood your own sword is caked in.
+'Jarl said we don't have time to ask the West for help, but--' One man grunts as he lashes out at a shadow mistaken for a demon.
+'--But we didn't need to swamp the bloody place in demons!' 
+'At least this'll teach the bloody empire for trying to stomp on us.' Another man with a Southern accent.
+These aren't bandits - they're just a Southern militia. And this wasn't a kidnapping.
+	BOSS PREP(PRE-DRAKE)(28-30)======================================================================================
+It's even worse than you had imagined. A hell-drake rears it's head, and you know instinctively just how strong it is.
+You barely even have time to run; it's eyes are on you in an instant, licking a plasma-like drool from it's lips.
+This will be the hardest fight of your career, or your last.
+	DRAKE DEAD - SWORD CHOICE(32-36)==========================================================================================
+You're panting, barely able to lift your sword. Unsurprisingly, a hell-drake is a tough cookie to break.
+But you've won; the drake is melting away, it's form becoming a slew of goop, and eventually leaving nothing but the insides of it's guts.
+This particular drake must have eaten half-a-dozen travelling hoarders since it was last killed.
+From inside it's stomach sack, a set of five swords come tumbling out, all in shockingly pristine condition.
+You toss your own blade aside, and go to pick one up. Finally, a lucky break.
+	PRE-BOSS - JARL(NOT LORE)(38-42)====================================================================================================
+With the drake taken down, and your new sword at your hip, you move ahead.
+Jarl isn't far away, and it seems the summoner has escaped after you took down the drake.
+'Jarl!' You rush to your appentice's side, but grimace as he forces you away.
+There is a grim look on his face. You don't know why, but his dagger is already drawn.
+Something tells you that you ought to do the same.
+	POST-BOSS - JARL(NOT LORE)(44-50)=================================================================================================
+You strike down Jarl, and he falls hard against the rocks. Over the course of your fight, you've come to realise he isn't an ally.
+'Damn--' Jarl turns back to you, his face a bloody mess. 'You've got no idea what's going on, do you?'
+'I know you just tried to kill me.' You could point out a dozen killing strikes Jarl just directed at your heart.
+'So be it, then. Finish me off, puppet.'
+You do exactly that, leaving Jarl's corpse with an unpleasant look on his face.
+The kind of expression that would conjure up a ghost; unfinished business.
+You will have a lot of explaining to the King, but you figure the job is done.
+	PRE-BOSS - JARL(LORE)(52-58)==============================================================================================
+With the hell-drake taken down, and your new sword at your hip, you move ahead.
+You find Jarl after a minute or two of searching, looking weak and drained.
+No doubt the summoning ritual took a lot out of him. You wonder if you should kill him now, or wait for him to get up.
+'Ugh...' Jarl sighs, realising his plan has come undone. 'You don't understand anything, do you?'
+You understand enough. 'I am a knight of the Empire. It is my job to protect it.'
+Jarl smiles, and it seems he's had enough for questions. He draws his blade.
+'Your Empire isn't what you think it is. That King is treating you like a puppet.'
+	POST-BOSS - JARL(LORE)(60-69)=============================================================================================	
+Jarl coughs out blood as you draw it from him. You know his fighting style like a script - because you taught it to him.
+'Well, you're a bloody strong puppet...' He realises he's lost. 'Even in the Fens, you cut us down like we were twigs.'
+Jarl brings up his necklace; an emblem of the Southern Defenders. So, they were spying on you in the South.
+You can't decide - is Jarl a traitor, or were you being tricked the whole time?
+'The Empire just rolls over people like us.' You step back, and let the wounded man explain himself.
+'Your King is planning on expanding into the South, and there's nothing we can do to stop him. We couldn't stop you, either.'
+'I was going to request help from the West, but, well...' He groans, dropping his sword to clutch his chest.
+You take the time to consider your options. You've chased down and executed a group of messengers.
+You can let them go, and complete their mission - perhaps the Empire will pull out of their conquest.
+Or, you could finish Jarl off, and have the Empire quietly choke the South out, with no-one to stop them.
+	BOSS KILLED(71-74)=======================================================================================================
+You've done this much already; might at least finish your job.
+You finish Jarl off with a single flick of your sword - this new blade is doing wonders.
+The King will knight you, and you won't even notice as the fertile lands of the South are trodden down.
+Perhaps the Empire will prosper. At least you can pat yourself on the back for that.
+	BOSS LET GO(SECRET ENDING)(76-83)=======================================================================================================
+You share a health potion with Jarl, and help him up. 'This never happened.' You still have a soft spot for your apprentice.
+Jarl nods. He knows just how far you've stuck your neck out for him, and his little country.
+'It will be our secret. Although I doubt we will meet again, I shan't forget this' Jarl catches his breath as the health potion works it's magic.
+'Consider this your last lesson.' You reach out your hand to shake Jarl, who takes it slowly.
+With this, the West will pressure the Empire into keeping it's hands off the South.
+Perhaps a world-wide war will break out. Perhaps the King will be executed.
+Your future is unsure, but you can't shake the feeling that Jarl will make the right choice.
+He is your apprentice, after all - hopefully he'll grow into a better Knight than you were.
+	SWORD 1(META)
+	SWORD 2(INTERESTING MECHANICS)
+	SWORD 3(RULE OF COOL)
+	SWORD 4(LORE-RELATED: JARL'S SWORD)
+	SWORD 5(LUCK)
