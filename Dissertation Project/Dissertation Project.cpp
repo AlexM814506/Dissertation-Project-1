@@ -459,7 +459,11 @@ void collect()
 			}
 		}
 	}
-	cout << "Kills: " << varias.kills << endl << "Gold: " << varias.GP << endl << "Lore: " << varias.lore << endl << "Map Percentage: " << varias.mapperc << "/110" << endl;
+	cout << "Kills: " << varias.kills << endl << "Gold: " << varias.GP << endl << "Lore: " << varias.lore << "/11" << endl << "Map Percentage: " << varias.mapperc << "/110" << endl;
+	ofstream Results;
+	Results.open("Results.txt");
+	Results << "K:" << varias.kills << "G:" << varias.GP << "L:" << varias.lore << endl << "MP:" << varias.mapperc << "SW:" << varias.swordchoice << endl;
+	Results.close();
 }
 
 //SYSTEM FUNCTIONS
@@ -515,7 +519,7 @@ void mapone()
 	{
 		cout << levelonechar[i][0] << levelonechar[i][1] << levelonechar[i][2] << levelonechar[i][3] << levelonechar[i][4] << endl;
 	}
-	levelonechar[varias.Y][varias.X] = 'X';
+	levelonechar[varias.Y][varias.X] = 'C';
 }
 
 void maptwo()
@@ -527,7 +531,7 @@ void maptwo()
 	{
 		cout << leveltwochar[i][0] << leveltwochar[i][1] << leveltwochar[i][2] << leveltwochar[i][3] << leveltwochar[i][4] << leveltwochar[i][5] << endl;
 	}
-	leveltwochar[varias.Y][varias.X] = 'X';
+	leveltwochar[varias.Y][varias.X] = 'C';
 }
 
 void mapthree()
@@ -539,7 +543,7 @@ void mapthree()
 	{
 		cout << levelthreechar[i][0] << levelthreechar[i][1] << levelthreechar[i][2] << levelthreechar[i][3] << levelthreechar[i][4] << levelthreechar[i][5] << levelthreechar[i][6] << endl;
 	}
-	levelthreechar[varias.Y][varias.X] = 'X';
+	levelthreechar[varias.Y][varias.X] = 'C';
 }
 
 //COMBAT FUNCTIONS
