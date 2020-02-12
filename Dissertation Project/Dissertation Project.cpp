@@ -83,6 +83,7 @@ public:
 	int kills;
 	float lore;
 	int swordchoice;
+	int mapperc;
 	int modifier = 0;
 	bool TESTER = 0;
 	//POSITIONALS
@@ -396,6 +397,71 @@ void heroMaker()
 	}
 }
 
+void collect()
+{
+	for (int a = 0; a < 5; a++)
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			switch (levelonechar[a][i])
+			{
+			case 'O':
+				varias.mapperc++;
+				break;
+			case 'N':
+				varias.mapperc++;
+				break;
+			case 'C':
+				varias.mapperc++;
+				break;
+			case 'X':
+				break;
+			}
+		}
+	}
+	for (int a = 0; a < 6; a++)
+	{
+		for (int i = 0; i < 6; i++)
+		{
+			switch (leveltwochar[a][i])
+			{
+			case 'O':
+				varias.mapperc++;
+				break;
+			case 'N':
+				varias.mapperc++;
+				break;
+			case 'C':
+				varias.mapperc++;
+				break;
+			case 'X':
+				break;
+			}
+		}
+	}
+	for (int a = 7; a < 5; a++)
+	{
+		for (int i = 7; i < 5; i++)
+		{
+			switch (levelthreechar[a][i])
+			{
+			case 'O':
+				varias.mapperc++;
+				break;
+			case 'N':
+				varias.mapperc++;
+				break;
+			case 'C':
+				varias.mapperc++;
+				break;
+			case 'X':
+				break;
+			}
+		}
+	}
+	cout << "Kills: " << varias.kills << endl << "Gold: " << varias.GP << endl << "Lore: " << varias.lore << endl << "Map Percentage: " << varias.mapperc << "/110" << endl;
+}
+
 //SYSTEM FUNCTIONS
 
 void gameover()
@@ -405,7 +471,7 @@ void gameover()
 	cout << "You slump to the floor, and blackout." << endl;
 	Sleep(1000);
 	cout << "YOU DIED" << endl;
-	cout << "Kills: " << varias.kills << endl << "Gold: " << varias.GP << endl << "Lore: " << varias.lore << endl;
+	collect();
 	cin >> choice;
 	lineBreak(10);
 	main();
@@ -451,6 +517,7 @@ void mapone()
 	}
 	levelonechar[varias.Y][varias.X] = 'X';
 }
+
 void maptwo()
 {
 	cout << "You take a look at your map." << endl;
@@ -1615,11 +1682,59 @@ void bossloop()
 	{
 		cout << "Jarl is frozen! He can't attack!" << endl;
 		TE.freeze = false;
+		if (varias.HitPoints <= 0) //ARE YOU DEAD?
+		{
+			gameover();
+		}
+		else if (varias.HitPoints > 0)
+		{
+			cout << "The battle continues, although Jarl looks much weaker." << endl;
+			if (varias.poison == true) //POISON DMG
+			{
+				varias.minusX(varias.HitPoints, 4);
+				cout << "You take damage from poison!" << endl;
+				if (varias.HitPoints <= 0) //ARE YOU DEAD?
+				{
+					gameover();
+				}
+			}
+			cout << "You have " << varias.HitPoints << " HP remaining!" << endl;
+			if (varias.empowered > 0) //EMPOWERED LOSES STRENGTH
+			{
+				varias.empowered--;
+				cout << varias.sword << " loses some of it's magical power! You have " << varias.empowered << " turns left." << endl;
+			}
+			bossloop();
+		}
 	}
 	else if (TE.stun == true)
 	{
 		cout << "Jarl reels from the attack, and fails to strike back!" << endl;
 		TE.stun = false;
+		if (varias.HitPoints <= 0) //ARE YOU DEAD?
+		{
+			gameover();
+		}
+		else if (varias.HitPoints > 0)
+		{
+			cout << "The battle continues, although Jarl looks much weaker." << endl;
+			if (varias.poison == true) //POISON DMG
+			{
+				varias.minusX(varias.HitPoints, 4);
+				cout << "You take damage from poison!" << endl;
+				if (varias.HitPoints <= 0) //ARE YOU DEAD?
+				{
+					gameover();
+				}
+			}
+			cout << "You have " << varias.HitPoints << " HP remaining!" << endl;
+			if (varias.empowered > 0) //EMPOWERED LOSES STRENGTH
+			{
+				varias.empowered--;
+				cout << varias.sword << " loses some of it's magical power! You have " << varias.empowered << " turns left." << endl;
+			}
+			bossloop();
+		}
 	}
 	else if (TE.HP > 0) //IF IT IS ALIVE, IT ATTACKS!
 	{
@@ -1755,8 +1870,12 @@ void bossloop()
 			cout << "The battle continues, although Jarl looks much weaker." << endl;
 			if (varias.poison == true) //POISON DMG
 			{
-				varias.minusX(varias.HitPoints, 2);
+				varias.minusX(varias.HitPoints, 4);
 				cout << "You take damage from poison!" << endl;
+				if (varias.HitPoints <= 0) //ARE YOU DEAD?
+				{
+					gameover();
+				}
 			}
 			cout << "You have " << varias.HitPoints << " HP remaining!" << endl;
 			if (varias.empowered > 0) //EMPOWERED LOSES STRENGTH
@@ -1849,11 +1968,59 @@ void fightloop()
 	{
 		cout << "The enemy is frozen! It can't attack!" << endl;
 		TE.freeze = false;
+		if (varias.HitPoints <= 0) //ARE YOU DEAD?
+		{
+			gameover();
+		}
+		else if (varias.HitPoints > 0)
+		{
+			cout << "The battle continues, although your enemy is weaker." << endl;
+			if (varias.poison == true) //POISON DMG
+			{
+				varias.minusX(varias.HitPoints, 5);
+				cout << "You take damage from poison!" << endl;
+				if (varias.HitPoints <= 0) //ARE YOU DEAD?
+				{
+					gameover();
+				}
+			}
+			cout << "You have " << varias.HitPoints << " HP remaining!" << endl;
+			if (varias.empowered > 0) //EMPOWERED LOSES STRENGTH
+			{
+				varias.empowered--;
+				cout << varias.sword << " loses some of it's magical power! You have " << varias.empowered << " turns left." << endl;
+			}
+			fightloop();
+		}
 	}
 	else if (TE.stun == true)
 	{
 		cout << "The enemy reels from the attack, and fails to strike back!" << endl;
 		TE.stun = false;
+		if (varias.HitPoints <= 0) //ARE YOU DEAD?
+		{
+			gameover();
+		}
+		else if (varias.HitPoints > 0)
+		{
+			cout << "The battle continues, although your enemy is weaker." << endl;
+			if (varias.poison == true) //POISON DMG
+			{
+				varias.minusX(varias.HitPoints, 5);
+				cout << "You take damage from poison!" << endl;
+				if (varias.HitPoints <= 0) //ARE YOU DEAD?
+				{
+					gameover();
+				}
+			}
+			cout << "You have " << varias.HitPoints << " HP remaining!" << endl;
+			if (varias.empowered > 0) //EMPOWERED LOSES STRENGTH
+			{
+				varias.empowered--;
+				cout << varias.sword << " loses some of it's magical power! You have " << varias.empowered << " turns left." << endl;
+			}
+			fightloop();
+		}
 	}
 	else if (TE.HP > 0) //IF IT IS ALIVE, IT ATTACKS!
 	{
@@ -2204,6 +2371,7 @@ void caveone()
 			}
 			break;
 		}
+		levelonechar[varias.Y][varias.X] = 'C';
 	}
 }
 
@@ -2438,6 +2606,7 @@ void cavetwo()
 			varias.PX = varias.X;
 			varias.PY = varias.Y;
 		}
+		leveltwochar[varias.Y][varias.X] = 'C';
 	}
 }
 
@@ -2722,6 +2891,7 @@ void cavethree()
 			varias.PX = varias.X;
 			varias.PY = varias.Y;
 		}
+		levelthreechar[varias.Y][varias.X] = 'C';
 	}
 }
 
@@ -2811,7 +2981,7 @@ int main()
 	finalboss();
 	lineBreak(2);
 	cout << "THE END" << endl;
-	cout << "Kills: " << varias.kills << endl << "Gold: " << varias.GP << endl << "Lore: " << varias.lore << endl;
+	collect();
     return 0;
 }
 
