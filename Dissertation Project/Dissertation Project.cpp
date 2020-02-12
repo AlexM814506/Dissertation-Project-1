@@ -23,12 +23,15 @@ bool line[4] = { true, false, false, false };
 
 int levelone[5][5] = { 1,  2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25};
 bool levelonebool[5][5] = { true, true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true };
+char levelonechar[5][5] = { { 'X', 'X', 'X', 'X', 'X'} ,{ 'X', 'X', 'X', 'X', 'X'} ,{ 'X', 'X', 'X', 'X', 'X'} ,{ 'X', 'X', 'X', 'X', 'X'} ,{ 'X', 'X', 'X', 'X', 'X'} };
 
 int leveltwo[6][6] = { 1,  2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36 };
 bool leveltwobool[7][7] = { true, true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true, true, true, true, true, true, true, true, true, true, true, true };
+char leveltwochar[6][6] = { { 'X', 'X', 'X', 'X', 'X', 'X'},{ 'X', 'X', 'X', 'X', 'X', 'X' },{ 'X', 'X', 'X', 'X', 'X', 'X' },{ 'X', 'X', 'X', 'X', 'X', 'X' },{ 'X', 'X', 'X', 'X', 'X', 'X' },{ 'X', 'X', 'X', 'X', 'X', 'X' } };
 
 int levelthree[7][7] = { 1,  2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49 };
 bool levelthreebool[7][7] = { true, true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true };
+char levelthreechar[7][7] = { { 'X', 'X', 'X', 'X', 'X', 'X', 'X' },{ 'X', 'X', 'X', 'X', 'X', 'X', 'X' },{ 'X', 'X', 'X', 'X', 'X', 'X', 'X' },{ 'X', 'X', 'X', 'X', 'X', 'X', 'X' },{ 'X', 'X', 'X', 'X', 'X', 'X', 'X' },{ 'X', 'X', 'X', 'X', 'X', 'X', 'X' },{ 'X', 'X', 'X', 'X', 'X', 'X', 'X' }, };
 
 //IDENTIFIERS
 
@@ -435,6 +438,41 @@ void bossmaker()
 	TE.MAG = varias.MAG;
 
 	cout << "You encounter Ser Jarl." << endl;
+}
+
+void mapone() 
+{
+	cout << "You take a look at your map." << endl;
+	lineBreak(1);
+	levelonechar[varias.Y][varias.X] = 'O';
+	for (int i = 0; i <= 4; i++)
+	{
+		cout << levelonechar[i][0] << levelonechar[i][1] << levelonechar[i][2] << levelonechar[i][3] << levelonechar[i][4] << endl;
+	}
+	levelonechar[varias.Y][varias.X] = 'X';
+}
+void maptwo()
+{
+	cout << "You take a look at your map." << endl;
+	lineBreak(1);
+	leveltwochar[varias.Y][varias.X] = 'O';
+	for (int i = 0; i <= 5; i++)
+	{
+		cout << leveltwochar[i][0] << leveltwochar[i][1] << leveltwochar[i][2] << leveltwochar[i][3] << leveltwochar[i][4] << leveltwochar[i][5] << endl;
+	}
+	leveltwochar[varias.Y][varias.X] = 'X';
+}
+
+void mapthree()
+{
+	cout << "You take a look at your map." << endl;
+	lineBreak(1);
+	levelthreechar[varias.Y][varias.X] = 'O';
+	for (int i = 0; i <= 6; i++)
+	{
+		cout << levelthreechar[i][0] << levelthreechar[i][1] << levelthreechar[i][2] << levelthreechar[i][3] << levelthreechar[i][4] << levelthreechar[i][5] << levelthreechar[i][6] << endl;
+	}
+	levelthreechar[varias.Y][varias.X] = 'X';
 }
 
 //COMBAT FUNCTIONS
@@ -1271,6 +1309,19 @@ void block()
 	cout << "There doesn't seem to be any way ahead." << endl << "You can't go this way." << endl;
 	Sleep(1000);
 	cout << "You turn around and go back the way you came." << endl;
+
+	if (cave1 == true)
+	{
+		levelonechar[varias.Y][varias.X] = 'N';
+	}
+	else if (cave2 == true)
+	{
+		leveltwochar[varias.Y][varias.X] = 'N';
+	}
+	else if (cave3 == true)
+	{
+		levelthreechar[varias.Y][varias.X] = 'N';
+	}	
 	varias.X = varias.PX;
 	varias.Y = varias.PY;
 }
@@ -1572,11 +1623,11 @@ void bossloop()
 	}
 	else if (TE.HP > 0) //IF IT IS ALIVE, IT ATTACKS!
 	{
-		aichoice = rand() % 2 + 1;
+		aichoice = rand() % 2 + 1; //DOES IT ATTACK OR USE MAGIC?
 		switch (aichoice)
 		{
 		case 1:
-			if (varias.block == true) //IF YOU SHIELD IS UP
+			if (varias.block == true) //IF YOUR SHIELD IS UP - SHIELD DOESNT BLOCK MAGIC?
 			{
 				varias.minusX(varias.ShieldHp, TE.ATK);
 				if (varias.ShieldHp == 0) //IF IT BREAKS DURING THE ATTACK
@@ -1607,7 +1658,7 @@ void bossloop()
 					cout << "Your armor holds strong, and you take no damage!" << endl;
 					Sleep(500);
 					cout << "Your armor weakens as it takes the brunt of the attack." << endl;
-					varias.minusX(varias.DEF, 1);
+					varias.minusX(varias.DEF, 1); //STACKING ARMOR DOESNT WORK
 				}
 			}
 			break;
@@ -1695,8 +1746,6 @@ void bossloop()
 			}
 			break;
 		}
-	}
-
 		if (varias.HitPoints <= 0) //ARE YOU DEAD?
 		{
 			gameover();
@@ -1740,6 +1789,7 @@ void bossloop()
 			}
 			bossloop();
 		}
+	}
 }
 
 void fightloop()
@@ -1847,27 +1897,26 @@ void fightloop()
 				}
 			}
 		}
-	}
-
-	if (varias.HitPoints <= 0) //ARE YOU DEAD?
-	{
-		gameover();
-	}
-	else if (varias.HitPoints > 0)
-	{
-		cout << "The battle continues, although your enemy is weaker." << endl;
-		if (varias.poison == true) //POISON DMG
+		if (varias.HitPoints <= 0) //ARE YOU DEAD?
 		{
-			varias.minusX(varias.HitPoints, 5); 
-			cout << "You take damage from poison!" << endl;
+			gameover();
 		}
-		cout << "You have " << varias.HitPoints << " HP remaining!" << endl;
-		if (varias.empowered > 0) //EMPOWERED LOSES STRENGTH
+		else if (varias.HitPoints > 0)
 		{
-			varias.empowered--;
-			cout << varias.sword << " loses some of it's magical power! You have " << varias.empowered << " turns left." << endl;
+			cout << "The battle continues, although your enemy is weaker." << endl;
+			if (varias.poison == true) //POISON DMG
+			{
+				varias.minusX(varias.HitPoints, 5);
+				cout << "You take damage from poison!" << endl;
+			}
+			cout << "You have " << varias.HitPoints << " HP remaining!" << endl;
+			if (varias.empowered > 0) //EMPOWERED LOSES STRENGTH
+			{
+				varias.empowered--;
+				cout << varias.sword << " loses some of it's magical power! You have " << varias.empowered << " turns left." << endl;
+			}
+			fightloop();
 		}
-		fightloop();
 	}
 }
 
@@ -1881,6 +1930,7 @@ void caveone()
 	//DO SOME READING HERE, STORY IS FOR LATER THO
 	while (cave1 == true)
 	{
+		mapone();
 		lineBreak(1);
 		cout << "The cave goes quiet around you." << endl << "It seems you have a chance to move on..." << endl;
 		Sleep(1000);
@@ -2167,6 +2217,7 @@ void cavetwo()
 	//DO SOME READING HERE, STORY IS FOR LATER THO
 	while (cave2 == true)
 	{
+		maptwo();
 		lineBreak(1);
 		cout << "The forest goes quiet around you." << endl << "It seems you have a chance to move on..." << endl;
 		Sleep(1000);
@@ -2400,6 +2451,7 @@ void cavethree()
 	//DO SOME READING HERE, STORY IS FOR LATER THO
 	while (cave3 == true)
 	{
+		mapthree();
 		lineBreak(1);
 		cout << "The hallway goes quiet around you." << endl << "It seems you have a chance to move on..." << endl;
 		Sleep(1000);
