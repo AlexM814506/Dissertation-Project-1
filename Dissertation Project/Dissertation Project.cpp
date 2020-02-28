@@ -78,6 +78,7 @@ public:
 	int ShieldHp = 20;
 	int armorset = 0;
 	bool light = false;
+	bool burn = false;
 	//IMPORTANT STUFF	
 	int GP;
 	int kills;
@@ -294,7 +295,6 @@ void EnemyCreator(int level)
 		TE.trait = "Undead";
 		TE.lootlevel = 8;
 		break;
-
 	}
 
 }
@@ -506,6 +506,7 @@ void bossmaker()
 	TE.level = "Level 10 Jarl";
 	TE.MP = varias.MAG * 5;
 	TE.MAG = varias.MAG;
+	TE.trait = "null";
 
 	cout << "You encounter Ser Jarl." << endl;
 }
@@ -616,7 +617,7 @@ void Attack()
 		break;
 	case 4:
 		cout << varias.sword << " Jarl struggles to fight against his own blade. His defenses slip!" << endl;
-		TE.DEF--;
+		TE.minusX(TE.DEF, 1);
 		break;
 	case 5:
 		aichoice = rand() % 4 + 1;
@@ -637,6 +638,10 @@ void Attack()
 			break;
 		}
 		break;
+	}
+	if (varias.burn == true)
+	{
+		TE.minusX(TE.HP, 5);
 	}
 }
 
@@ -901,7 +906,7 @@ void Item()
 			cout << i << "- A mana potion (Replenishes 5 Mana)" << endl;
 			break;
 		case 3:
-			cout << i << "- A throwing knife (Hits far away enemies)" << endl;
+			cout << i << "- A throwing knife (Cripples far away enemies)" << endl;
 			break;
 		case 4:
 			cout << i << "- A cross (Useful against undead and demons)" << endl;
@@ -919,13 +924,13 @@ void Item()
 			cout << i << "- A fragile glass blade (Allows you to attack twice)" << endl;
 			break;
 		case 9:
-			cout << i << "- A beastman horn! (Allows for a small follow-up attack)" << endl;
+			cout << i << "- A beastman horn (Allows for a small follow-up attack)" << endl;
 			break;
 		case 10:
-			cout << i << "- A ManaLife potion! (Heals half your missing HP and 20 mana, and cures poison)" << endl;
+			cout << i << "- A ManaLife potion (Heals half your missing HP and 20 mana, and cures poison)" << endl;
 			break;
 		case 11:
-			cout << i << "- A poison bomb! (Applies a large poison)" << endl;
+			cout << i << "- A poison bomb (Applies a large poison to the enemy)" << endl;
 			break;
 		}
 	}
@@ -1039,7 +1044,7 @@ void Item()
 	case 9:
 		lineBreak(1);
 		cout << "You stab the horn into the enemy's body, wounding them!" << endl;
-		TE.minusX(TE.HP, (varias.ATK + 5));
+		TE.minusX(TE.HP, (varias.ATK));
 		varias.inventory[itemchoice] = 0;
 		cout << "The horn is stuck into the enemy; you then attack!" << endl;
 		Attack();
@@ -1180,6 +1185,11 @@ void treasure(int treasure)
 				i = 16;
 			}
 		}
+		break;
+	case 5:
+		cout << "You find a burning potion, and apply it to your blade!" << endl;
+		varias.burn = true;
+		cout << "Your attacks will now deal extra damage!" << endl;
 		break;
 	}
 }
@@ -2516,7 +2526,7 @@ void cavetwo()
 				break;
 			case 14:
 				//TREASURE
-				treasure(3);
+				treasure(5);
 				break;
 			case 15:
 				//FIGHT
@@ -2620,7 +2630,7 @@ void cavethree()
 	varias.X = 0;
 	varias.Y = 6;
 	cave3 = true;
-	cout << "Entering the castle from the south, ." << endl;
+	cout << "Entering the castle from the south, the corridors are borne into the rock-face, stretching out ahead of you." << endl;
 	//DO SOME READING HERE, STORY IS FOR LATER THO
 	while (cave3 == true)
 	{
@@ -2688,7 +2698,7 @@ void cavethree()
 			cout << "After beating your enemy, you return to the path." << endl;
 			varias.Y = 6;
 		}
-		//REMEMBER THAT ARRAYS= 0->4
+		//REMEMBER THAT ARRAYS= 0->6
 		//F = FIGHT, T = TREASURE, B = BLOCK, S = SECRET, X = EVENT/TRAP E = ENTRANCE/EXIT 0 = BLANK
 		//01 02 03 04 05 06 07 - 0,0 0,1 0,2 0,3 0,4 0,5 0,6 - B S F X F T B
 		//08 09 10 11 12 13 14 - 1,0 1,1 1,2 1,3 1,4 1,5 1,6 - B F 0 S F F 0
@@ -2853,7 +2863,7 @@ void cavethree()
 				break;
 			case 40:
 				//TREASURE
-				treasure(3);
+				treasure(5);
 				break;
 			case 41:
 				//BLOCK
@@ -2905,7 +2915,7 @@ void finalboss()
 	cout << "You have a chance to use some items before you move on." << endl;
 	Item();
 	lineBreak(1);
-	if (varias.lore < 11)
+	if (varias.lore < 10)
 	{
 		sectionRead(1, 38, 42);
 		bossmaker();
@@ -2913,7 +2923,7 @@ void finalboss()
 		lineBreak(1);
 		sectionRead(1, 71, 74);
 	}
-	else if (varias.lore == 11)
+	else if (varias.lore >= 10)
 	{
 		sectionRead(1, 44, 50);
 		bossmaker();
