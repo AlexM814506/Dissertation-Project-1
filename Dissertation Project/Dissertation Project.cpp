@@ -20,6 +20,7 @@ bool cave1 = false;
 bool cave2 = false;
 bool cave3 = false;
 bool line[4] = { true, false, false, false };
+bool lines[5] = { true, true, true, true, true };
 
 int levelone[5][5] = { 1,  2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25};
 bool levelonebool[5][5] = { true, true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true };
@@ -1097,32 +1098,69 @@ void Negotiate()
 		}
 	}
 	cin >> choice;
+	lineBreak(1);
 	switch (choice)
 	{
 	case 1:
+		if (lines[0] == true)
+		{
+			cout << "'You're standing in my way.' Jarl grimaces. 'I need to get to the Western Kingdom.'" << endl;
+			lines[0] = false;
+			fight = false;
+		}
+		else if (lines[0] == false)
+		{
+			cout << "'You're fighting me, aren't  you?' Jarl asks sarcastically, laughing in your face.'" << endl;
+		}
 		break;
 	case 2:
-		if (varias.lore >= 5)
+		if ((varias.lore >= 5) && (lines[1] == true))
 		{
-
+			cout << "'Well, you weren't there, were you?' Jarl groans, cursing the King's name under his breath. 'My people aren't wanted there, anymore.'" << endl;
+			lines[1] = false;
+			fight = false;
+		}
+		else if((varias.lore <= 5) || (lines[1] == false))
+		{
+			cout << "'Haven't pieced it together, yet?' Jarl laughs unpleasantly. 'And here I thought I'd left all the proper clues.'" << endl;
 		}
 		break;
 	case 3:
-		if (varias.lore >= 15)
+		if ((varias.lore >= 15) && (lines[2] == true))
 		{
-
+			cout << "'The Western Kingdom are the only ones who have the balls to stand up to your precious King, obviously...'" << endl;
+			lines[2] = false;
+			fight = false;
+		}
+		else if ((varias.lore <= 15) || (lines[2] == false))
+		{
+			cout << "'At least the West isn't run by a madman.' Jarl scowls, gripping his sword tighter. 'Your damn King isn't all he seems.'" << endl;
 		}
 		break;
 	case 4:
-		if (varias.lore >= 20)
+		if ((varias.lore >= 20) && (lines[3] == true))
 		{
-
+			cout << "'I was hardly even spying on you.' Jarl explains, his grim smile gone. 'I was just trying to protect my homeland.'" << endl;
+			lines[3] = false;
+			fight = false;
+		}
+		else if ((varias.lore <= 20) || (lines[3] == false))
+		{
+			cout << "'I thought I could learn a few extra things...' Jarl replies, his voice dripping venom and sarcasm. 'Maybe not.'" << endl;
 		}
 		break;
 	case 5: 
-		if (varias.lore >= 30)
+		if ((varias.lore >= 30) && (lines[4] == true))
 		{
-
+			cout << "Jarl stops for a moment, looking down at his feet. 'The Empire is planning to invade the South. I'm just trying to stop that." << endl;
+			lineBreak(1);
+			cout << "He fills with anger, after a second. 'I won't feel a drop of regret from pushing a puppet like you out of my way!'" << endl;
+			lines[4] = false;
+			fight = false;
+		}
+		else if ((varias.lore <= 30) || (lines[4] == false))
+		{
+			cout << "'If you want to know the truth, ask the King.' Jarl lashes out at you. 'Not like it'll make any difference!'" << endl;
 		}
 		break;
 	}
@@ -1703,11 +1741,7 @@ void bossloop()
 {
 	fight = true;
 	lineBreak(1);
-	cout << "What will you do?" << endl << "1 - Attack!" << endl << "2 - Magic!" << endl << "3 - item!" << endl;
-	if (varias.lore > 20)
-	{
-		cout << "4 - Negotiate!" << endl;
-	}
+	cout << "What will you do?" << endl << "1 - Attack!" << endl << "2 - Magic!" << endl << "3 - item!" << endl << "4 - Negotiate!" << endl;
 	cin >> choice;
 	switch (choice)
 	{
@@ -1982,7 +2016,7 @@ void bossloop()
 				line[2] = false;
 				line[3] = true;
 			}
-			else if ((TE.HP < 50) && (line[3] == true))
+			else if ((TE.HP < 15) && (line[3] == true))
 			{
 				cout << "Jarl has all but given up, on his last legs. 'Try not to feel too bad about this.' It almost sounds like he's surrendering." << endl;
 			}
