@@ -33,6 +33,8 @@ int levelthree[7][7] = { 1,  2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
 bool levelthreebool[7][7] = { true, true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true };
 char levelthreechar[7][7] = { { 'X', 'X', 'X', 'X', 'X', 'X', 'X' },{ 'X', 'X', 'X', 'X', 'X', 'X', 'X' },{ 'X', 'X', 'X', 'X', 'X', 'X', 'X' },{ 'X', 'X', 'X', 'X', 'X', 'X', 'X' },{ 'X', 'X', 'X', 'X', 'X', 'X', 'X' },{ 'X', 'X', 'X', 'X', 'X', 'X', 'X' },{ 'X', 'X', 'X', 'X', 'X', 'X', 'X' }, };
 
+bool fight = true;
+int negotiate = 0;
 //IDENTIFIERS
 
 int main();
@@ -82,7 +84,7 @@ public:
 	//IMPORTANT STUFF	
 	int GP;
 	int kills;
-	float lore;
+	int lore;
 	int swordchoice;
 	int mapperc;
 	int modifier = 0;
@@ -459,7 +461,7 @@ void collect()
 			}
 		}
 	}
-	cout << "Kills: " << varias.kills << endl << "Gold: " << varias.GP << endl << "Lore: " << varias.lore << "/11" << endl << "Map Percentage: " << varias.mapperc << "/110" << endl;
+	cout << "Kills: " << varias.kills << endl << "Gold: " << varias.GP << endl << "Lore: " << varias.lore << "/40 points" << endl << "Map Percentage: " << varias.mapperc << "/110" << endl;
 	ofstream Results;
 	Results.open("Results.txt");
 	Results << "K:" << varias.kills << "G:" << varias.GP << "L:" << varias.lore << endl << "MP:" << varias.mapperc << "SW:" << varias.swordchoice << endl;
@@ -1072,6 +1074,60 @@ void Item()
 
 }
 
+void Negotiate()
+{
+	lineBreak(1);
+	cout << "You work up the bravery to lower your sword." << endl << "What do you want to ask Jarl?" << endl;
+	Sleep(500);
+	cout << "1. Ask why he's fighting you." << endl;
+	if (varias.lore >= 5)
+	{
+		cout << "2. Ask why he's running away from the Empire." << endl;
+		if (varias.lore >= 15)
+		{
+			cout << "3. Ask why he was escaping to the West." << endl;
+			if (varias.lore >= 20)
+			{
+				cout << "4. Ask why he was spying on you in the South." << endl;
+				if (varias.lore >= 30)
+				{
+					cout << "5. You know everything. Ask about the truth." << endl;
+				}
+			}
+		}
+	}
+	cin >> choice;
+	switch (choice)
+	{
+	case 1:
+		break;
+	case 2:
+		if (varias.lore >= 5)
+		{
+
+		}
+		break;
+	case 3:
+		if (varias.lore >= 15)
+		{
+
+		}
+		break;
+	case 4:
+		if (varias.lore >= 20)
+		{
+
+		}
+		break;
+	case 5: 
+		if (varias.lore >= 30)
+		{
+
+		}
+		break;
+	}
+}
+
 //EXTRA FUNCTIONS
 
 void swordchoice()
@@ -1339,47 +1395,49 @@ void secret(int secret)
 	{
 	case 1:
 		sectionRead(0, 41, 48);
-		varias.lore++;
+		varias.addX(varias.lore, 3);
 		break;
 	case  2:
 		sectionRead(0, 50, 52);
-		varias.lore++;
+		varias.addX(varias.lore, 5);
 		break;
 	case 3:
 		sectionRead(0, 54, 59);
-		varias.lore++;
+		varias.addX(varias.lore, 2);
 		break;
+		//
 	case 4:
 		sectionRead(0, 89, 94);
-		varias.lore++;
+		varias.addX(varias.lore, 5);
 		break;
 	case 5:
 		sectionRead(0, 96, 100);
-		varias.lore++;
+		varias.addX(varias.lore, 3);
 		break;
 	case 6:
 		sectionRead(0, 102, 106);
-		varias.lore++;
+		varias.addX(varias.lore, 1);
 		break;
 	case 7:
 		sectionRead(0, 108, 111);
-		varias.lore++;
+		varias.addX(varias.lore, 1);
 		break;
+		//
 	case 8: //LESS IMPORTANT
 		sectionRead(1, 9, 13);
-		varias.lore++;
+		varias.addX(varias.lore, 2);
 		break;
 	case 9: //ALSO IMPORTANT
 		sectionRead(1, 15, 19);
-		varias.lore++;
+		varias.addX(varias.lore, 5);
 		break;
 	case 10: //BOSS PREP
 		sectionRead(1, 28, 30);
-		varias.lore++;
+		varias.addX(varias.lore, 3);
 		break;
 	case 11: //IMPORTANT ONE
 		sectionRead(1, 21, 26);
-		varias.lore++;
+		varias.addX(varias.lore, 10);
 		break;
 	}
 }
@@ -1643,8 +1701,13 @@ void drop()
 
 void bossloop()
 {
+	fight = true;
 	lineBreak(1);
 	cout << "What will you do?" << endl << "1 - Attack!" << endl << "2 - Magic!" << endl << "3 - item!" << endl;
+	if (varias.lore > 20)
+	{
+		cout << "4 - Negotiate!" << endl;
+	}
 	cin >> choice;
 	switch (choice)
 	{
@@ -1656,6 +1719,9 @@ void bossloop()
 		break;
 	case 3:
 		Item();
+		break;
+	case 4:
+		Negotiate();
 		break;
 	}
 	Sleep(1000);
@@ -1750,7 +1816,7 @@ void bossloop()
 			bossloop();
 		}
 	}
-	else if (TE.HP > 0) //IF IT IS ALIVE, IT ATTACKS!
+	else if ((TE.HP > 0) && (fight == true)) //IF IT IS ALIVE, IT ATTACKS!
 	{
 		aichoice = rand() % 2 + 1; //DOES IT ATTACK OR USE MAGIC?
 		switch (aichoice)
@@ -2915,7 +2981,7 @@ void finalboss()
 	cout << "You have a chance to use some items before you move on." << endl;
 	Item();
 	lineBreak(1);
-	if (varias.lore < 10)
+	if (varias.lore <= 20)
 	{
 		sectionRead(1, 38, 42);
 		bossmaker();
@@ -2923,7 +2989,7 @@ void finalboss()
 		lineBreak(1);
 		sectionRead(1, 71, 74);
 	}
-	else if (varias.lore >= 10)
+	else if (varias.lore > 20)
 	{
 		sectionRead(1, 44, 50);
 		bossmaker();
