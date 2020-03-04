@@ -61,40 +61,40 @@ public:
 		};
 	};
 	//BASIC STATS
-	int ATK;
-	int DEF;
-	int MAG;
-	int MP;
-	int HP;
-	int HitPoints;
+	int ATK = 0;
+	int DEF = 0;
+	int MAG = 0;
+	int MP = 0;
+	int HP = 0;
+	int HitPoints = 0;
 	//LESS IMPORTANT
-	string name;
-	string sword;
+	string name = "spaghetti";
+	string sword = "pasta";
 	int inventory[15];
 	int spellbook[8];
 	//CONDITIONS
-	bool poison;
-	bool freeze;
-	int points;
-	int empowered;
-	bool block;
+	bool poison = false;
+	bool freeze = false;
+	int points = 0;
+	int empowered = 0;
+	bool block = false;
 	int ShieldHp = 20;
 	int armorset = 0;
 	bool light = false;
 	bool burn = false;
 	//IMPORTANT STUFF	
-	int GP;
-	int kills;
-	int lore;
-	int swordchoice;
-	int mapperc;
+	int GP = 0;
+	int kills = 0;
+	int lore = 0;
+	int swordchoice = 0;
+	int mapperc = 0;
 	int modifier = 0;
 	bool TESTER = 0;
 	//POSITIONALS
-	int X;
-	int Y;
-	int PX;
-	int PY;
+	int X = 0;
+	int Y = 0;
+	int PX = 0;
+	int PY = 0;
 };
 
 class enemy
@@ -112,17 +112,17 @@ public:
 			x = 0;
 		};
 	};
-	int ATK;
-	int HP;
+	int ATK = 0;
+	int HP = 0;
 	int DEF = 0;
-	int MP;
-	int MAG;
-	string level;
-	int lootlevel;
-	string trait;
-	bool poison;
-	bool freeze;
-	bool stun;
+	int MP = 0;
+	int MAG = 0;
+	string level = "null";
+	int lootlevel = 0;
+	int trait = 1;
+	bool poison = false;
+	bool freeze = false; 
+	bool stun = false;
 	int poisonpower = 1;
 };
 
@@ -161,7 +161,7 @@ void read(int choice, int lineNo) //this is a more complicated function that I l
 
 void sectionRead(int choice, int a, int b) //after writing out this 'for' loop a few times in my code, I realised it would be even neater to use a my 'read' function inside a function!
 {
-	if (varias.TESTER = !1)
+	if (varias.TESTER =! 1)
 	{
 		for (int i = a; i <= b; i++)
 		{
@@ -172,12 +172,25 @@ void sectionRead(int choice, int a, int b) //after writing out this 'for' loop a
 
 //PREP FUNCTIONS
 
+//1 = null
+//2 = armor
+//3 = poison
+//4 = flying
+//5 = undead
+//6 = magical
+
 void EnemyCreator(int level)
 {
 	TE.poisonpower = 1;
 	TE.poison = false;
 	switch (level)
 	{
+		//1 = null
+		//2 = armor
+		//3 = poison
+		//4 = flying
+		//5 = undead
+		//6 = magical
 	case 1:
 		TE.minusX(TE.ATK, 40);
 		TE.minusX(TE.HP, 40);
@@ -185,7 +198,7 @@ void EnemyCreator(int level)
 		TE.addX(TE.ATK, 10);
 		TE.addX(TE.HP, 10);
 		TE.level = "Level 1 Rat";
-		TE.trait = "null";
+		TE.trait = 1;
 		TE.lootlevel = 1;
 		break;
 	case 2:
@@ -195,7 +208,7 @@ void EnemyCreator(int level)
 		TE.addX(TE.ATK, 15);
 		TE.addX(TE.HP, 15);
 		TE.level = "Level 2 Goblin";
-		TE.trait = "null";
+		TE.trait = 1;
 		TE.lootlevel = 2;
 		break;
 	case 3:
@@ -205,7 +218,7 @@ void EnemyCreator(int level)
 		TE.addX(TE.ATK, 20);
 		TE.addX(TE.HP, 30);
 		TE.level = "Level 3 Armored Ogre";
-		TE.trait = "Armored";
+		TE.trait = 2;
 		TE.lootlevel = 3;
 		break;
 	case 4:
@@ -215,7 +228,7 @@ void EnemyCreator(int level)
 		TE.addX(TE.ATK, 25);
 		TE.addX(TE.HP, 20);
 		TE.level = "Level 4 Demon";
-		TE.trait = "Undead";
+		TE.trait = 5;
 		TE.lootlevel = 10;
 		break;
 	case 5:
@@ -225,7 +238,7 @@ void EnemyCreator(int level)
 		TE.addX(TE.ATK, 20);
 		TE.addX(TE.HP, 25);
 		TE.level = "Level 5 Flying Beast";
-		TE.trait = "Flying";
+		TE.trait = 4;
 		TE.lootlevel = 10;
 		break;
 	case 6:
@@ -235,7 +248,7 @@ void EnemyCreator(int level)
 		TE.addX(TE.ATK, 25);
 		TE.addX(TE.HP, 40);
 		TE.level = "Level 6 Hell-Drake";
-		TE.trait = "Undead";
+		TE.trait = 5;
 		TE.lootlevel = 9;
 		break;
 	case 7:
@@ -245,7 +258,7 @@ void EnemyCreator(int level)
 		TE.addX(TE.ATK, 4);
 		TE.addX(TE.HP, 10);
 		TE.level = "Level 2 Gremlin";
-		TE.trait = "null";
+		TE.trait = 1;
 		TE.lootlevel = 0;
 		break;
 	case 8:
@@ -255,7 +268,7 @@ void EnemyCreator(int level)
 		TE.addX(TE.ATK, 15);
 		TE.addX(TE.HP, 30);
 		TE.level = "Level 3 Human Bandit";
-		TE.trait = "Poison";
+		TE.trait = 3;
 		TE.lootlevel = 6;
 		break;
 	case 9:
@@ -265,7 +278,7 @@ void EnemyCreator(int level)
 		TE.addX(TE.ATK, 18);
 		TE.addX(TE.HP, 30);
 		TE.level = "Level 2 Forest Spirit";
-		TE.trait = "Magical";
+		TE.trait = 6;
 		TE.lootlevel = 4;
 		break;
 	case 10:
@@ -275,7 +288,7 @@ void EnemyCreator(int level)
 		TE.addX(TE.ATK, 30);
 		TE.addX(TE.HP, 20);
 		TE.level = "Level 3 Beastman";
-		TE.trait = "null";
+		TE.trait = 1;
 		TE.lootlevel = 5;
 		break;
 	case 11:
@@ -285,7 +298,7 @@ void EnemyCreator(int level)
 		TE.addX(TE.ATK, 20);
 		TE.addX(TE.HP, 30);
 		TE.level = "Level 5 Great Falcon";
-		TE.trait = "Flying";
+		TE.trait = 4;
 		TE.lootlevel = 7;
 		break;
 	case 12:
@@ -295,7 +308,7 @@ void EnemyCreator(int level)
 		TE.addX(TE.ATK, 20);
 		TE.addX(TE.HP, 40);
 		TE.level = "Level 7 Great Corpse";
-		TE.trait = "Undead";
+		TE.trait = 5;
 		TE.lootlevel = 8;
 		break;
 	}
@@ -320,16 +333,10 @@ void standinhero()
 	varias.inventory[2] = 2;
 	varias.inventory[3] = 2;
 	varias.inventory[4] = 6;
-	varias.inventory[5] = 0;
-	varias.inventory[6] = 0;
-	varias.inventory[7] = 0;
-	varias.inventory[8] = 0;
-	varias.inventory[9] = 0;
-	varias.inventory[10] = 0;
-	varias.inventory[11] = 0;
-	varias.inventory[12] = 0;
-	varias.inventory[13] = 0;
-	varias.inventory[14] = 0;
+	for (int i = 5; i <= 14; i++)
+	{
+		varias.inventory[i] = 0;
+	}
 	varias.spellbook[0] = 0;
 	varias.spellbook[1] = 1;
 	varias.spellbook[2] = 10;
@@ -442,9 +449,9 @@ void collect()
 			}
 		}
 	}
-	for (int a = 7; a < 5; a++)
+	for (int a = 0; a < 7; a++)
 	{
-		for (int i = 7; i < 5; i++)
+		for (int i = 0; i < 7; i++)
 		{
 			switch (levelthreechar[a][i])
 			{
@@ -462,7 +469,7 @@ void collect()
 			}
 		}
 	}
-	cout << "Kills: " << varias.kills << endl << "Gold: " << varias.GP << endl << "Lore: " << varias.lore << "/40 points" << endl << "Map Percentage: " << varias.mapperc << "/110" << endl;
+	cout << "Kills: " << varias.kills << endl << "Gold: " << varias.GP << endl << "Lore: " << varias.lore << "/40 points" << endl << "Map Clear: " << varias.mapperc << "/110" << endl;
 	ofstream Results;
 	Results.open("Results.txt");
 	Results << "K:" << varias.kills << "G:" << varias.GP << "L:" << varias.lore << endl << "MP:" << varias.mapperc << "SW:" << varias.swordchoice << endl;
@@ -494,22 +501,23 @@ void fightstarter(int level)
 
 void levelup()
 {
-	varias.addX(varias.HitPoints, 5);
+	varias.addX(varias.HitPoints, 5); //5 HP HEALED
 	varias.addX(varias.MP, 5);
 	varias.addX(varias.MAG, 1);
 	varias.addX(varias.ATK, 1);
 	varias.addX(varias.DEF, 1);
+	varias.addX(varias.HP, 1); //10 MAX HP GAINED
 }
 
 void bossmaker()
 {
-	TE.ATK = varias.ATK * 2;
+	TE.ATK = varias.ATK * 1.5;
 	TE.DEF = varias.DEF / 2;
 	TE.HP = varias.HP * 10;
 	TE.level = "Level 10 Jarl";
 	TE.MP = varias.MAG * 5;
 	TE.MAG = varias.MAG;
-	TE.trait = "null";
+	TE.trait = 1;
 
 	cout << "You encounter Ser Jarl." << endl;
 }
@@ -555,52 +563,66 @@ void mapthree()
 void Attack()
 {
 	cout << "You swing your " << varias.sword << " at the enemy..." << endl;
-	if (varias.empowered > 0) //IF IT'S STRONG, IGNORE TRAITS
-	{
+
+	if (varias.empowered == 0) //BASIC ATTACK
+	{	
 		lineBreak(1);
-		cout << "You hit the enemy, and your empowered sword deals extra damage!" << endl;
-		cout << "You deal " << varias.ATK + varias.MAG << " points of damage!" << endl;
-		TE.minusX(TE.HP, (varias.ATK + varias.MAG));
-		if (TE.trait == "Magical" || TE.trait == "Undead")
+		switch (TE.trait)
 		{
-			cout << "The spell does extra damage against the spectral enemy!" << endl;
-			TE.minusX(TE.HP, 15);
-		}
-	}
-	else //FOR TRAITS
-	{
-		lineBreak(1);
-		if (TE.trait == "Armored")
-		{
+		case 1:		
+			cout << "You hit the enemy!" << endl;
+			Sleep(500);
+			cout << "You deal " << (varias.ATK - TE.DEF) << " points of damage!" << endl;
+			TE.minusX(TE.HP, (varias.ATK - TE.DEF));
+			break;
+		case 2:	
 			cout << "Your sword bounces off the enemy's armor! Find a way to shatter it!" << endl;
 			Sleep(500);
 			cout << "You deal " << varias.ATK / 2 << " points of damage!" << endl;
 			TE.minusX(TE.HP, (varias.ATK / 2));
-		}
-		else if (TE.trait == "Undead")
-		{
-			cout << "The enemy's undead body repels your blade, and you receive some damage!" << endl;
+			break;
+		case 3:
+			cout << "You hit the enemy!" << endl;
 			Sleep(500);
-			cout << "You deal " << varias.ATK / 2 << " points of damage!" << endl;
-			TE.minusX(TE.HP, (varias.ATK / 2));
-			varias.minusX(varias.HitPoints, 5);
-		}
-		else if (TE.trait == "Flying")
-		{
+			cout << "You deal " << (varias.ATK - TE.DEF) << " points of damage!" << endl;
+			TE.minusX(TE.HP, (varias.ATK - TE.DEF));
+			break;
+		case 4:		
 			cout << "The enemy is flying! It swoops down and shreds your defenses!" << endl;
 			Sleep(500);
 			varias.minusX(varias.DEF, 2);
 			cout << "You deal " << varias.ATK << " points of damage!" << endl;
 			TE.minusX(TE.HP, varias.ATK);
-		}
-		else
-		{
+			break;
+		case 5:	
+			cout << "The enemy's undead body repels your blade, and you receive some damage!" << endl;
+			Sleep(500);
+			cout << "You deal " << varias.ATK / 2 << " points of damage!" << endl;
+			TE.minusX(TE.HP, (varias.ATK / 2));
+			varias.minusX(varias.HitPoints, 5);
+			break;
+		case 6:
 			cout << "You hit the enemy!" << endl;
 			Sleep(500);
 			cout << "You deal " << (varias.ATK - TE.DEF) << " points of damage!" << endl;
 			TE.minusX(TE.HP, (varias.ATK - TE.DEF));
+			break;
+		}
+
+	}
+	else if(varias.empowered > 0) //EMPOWERED = IGNORE TRAITS
+	{
+		lineBreak(1);
+		cout << "You hit the enemy, and your empowered sword deals extra damage!" << endl;
+		cout << "You deal " << varias.ATK + varias.MAG << " points of damage!" << endl;
+		TE.minusX(TE.HP, (varias.ATK + varias.MAG));
+		if (TE.trait == 6 || TE.trait == 5)
+		{
+			cout << "The spell does extra damage against the spectral enemy!" << endl;
+			TE.minusX(TE.HP, 15);
 		}
 	}
+
 	switch (varias.modifier)
 	{
 	case 0:
@@ -642,6 +664,7 @@ void Attack()
 		}
 		break;
 	}
+
 	if (varias.burn == true)
 	{
 		TE.minusX(TE.HP, 5);
@@ -746,7 +769,7 @@ void Magic()
 			cout << "You cast Fire Blast!" << endl;
 			TE.minusX(TE.HP, (10 + varias.MAG));
 			varias.minusX(varias.MP, 3);
-			if (TE.trait == "Magical")
+			if (TE.trait == 6)
 			{
 				cout << "The spell does extra damage against the spectral enemy!" << endl;
 				TE.minusX(TE.HP, 15);
@@ -766,16 +789,16 @@ void Magic()
 			TE.minusX(TE.HP, (5 + varias.MAG));
 			TE.freeze = true;
 			varias.minusX(varias.MP, 4);
-			if (TE.trait == "Magical")
+			if (TE.trait == 6)
 			{
 				cout << "The spell does extra damage against the spectral enemy!" << endl;
 				TE.minusX(TE.HP, 15);
 			}
-			else if (TE.trait == "Flying")
+			else if (TE.trait == 4)
 			{
 				TE.minusX(TE.HP, 20);
 				cout << "The cold cripples the enemy's wings, and it drops to the floor!" << endl;
-				TE.trait = "null";
+				TE.trait = 1;
 			}
 		}
 		break;
@@ -809,7 +832,7 @@ void Magic()
 			TE.minusX(TE.HP, (10 + varias.MAG));
 			TE.poison = true;
 			varias.minusX(varias.MP, 5);
-			if (TE.trait == "Magical")
+			if (TE.trait == 6)
 			{
 				cout << "The spell does extra damage against the spectral enemy!" << endl;
 				TE.minusX(TE.HP, 15);
@@ -827,7 +850,7 @@ void Magic()
 			cout << "You cast Obliterate!" << endl;
 			TE.minusX(TE.HP, (20 + varias.MP + varias.MAG));
 			varias.MP = 0;
-			if (TE.trait == "Magical")
+			if (TE.trait == 6)
 			{
 				cout << "The spell does extra damage against the spectral enemy!" << endl;
 				TE.minusX(TE.HP, 15);
@@ -845,7 +868,7 @@ void Magic()
 			cout << "You cast Golden Fist!" << endl;
 			TE.minusX(TE.HP, (10 + varias.MAG + varias.ATK));
 			varias.minusX(varias.MP, 10);
-			if (TE.trait == "Magical")
+			if (TE.trait == 6)
 			{
 				cout << "The spell does extra damage against the spectral enemy!" << endl;
 				TE.minusX(TE.HP, 15);
@@ -948,6 +971,10 @@ void Item()
 		Sleep(500);
 		cout << "you swig your health potion, and feel better!" << endl;
 		varias.addX(varias.HitPoints, ((varias.HP*10) / 6));
+		if (varias.HitPoints > (varias.HP * 10))
+		{
+			varias.HitPoints = (varias.HP * 10);
+		}
 		varias.poison = false;
 		cout << "The item has been used up!" << endl;
 		Sleep(1000);
@@ -965,7 +992,7 @@ void Item()
 		cout << "You lob your throwing knife at the enemy!" << endl;
 		Sleep(500);
 		TE.minusX(TE.HP, (varias.ATK + 5));
-		if (TE.trait == "Flying")
+		if (TE.trait == 4)
 		{
 			TE.minusX(TE.HP, 5);
 			cout << "Hitting their wings, they drop to the floor!" << endl;
@@ -977,7 +1004,7 @@ void Item()
 	case 4:
 		cout << "You bear your cross against the enemy!" << endl;
 		Sleep(500);
-		if (TE.trait == "Undead" || "Demon")
+		if (TE.trait == 5)
 		{
 			cout << "The enemy recoils in pain!" << endl;
 			TE.minusX(TE.HP, 20);
@@ -993,10 +1020,10 @@ void Item()
 	case 5:
 		cout << "You brutally bring your hammer to bear on the enemy!" << endl;
 		Sleep(500);
-		if (TE.trait == "Armored")
+		if (TE.trait == 2)
 		{
 			cout << "The enemy's armor shatters!" << endl;
-			TE.trait == "null";
+			TE.trait = 1;
 			TE.minusX(TE.HP, (TE.HP / 4));
 			Sleep(1000);
 			cout << "The item has been used up!" << endl;
@@ -1030,6 +1057,10 @@ void Item()
 					i = 16;
 					cout << "You take the opportunity to also swig a health potion, and feel better!" << endl;
 					varias.addX(varias.HitPoints, ((varias.HP*10) / 6));
+					if (varias.HitPoints > (varias.HP * 10))
+					{
+						varias.HitPoints = (varias.HP * 10);
+					}
 				}
 			}
 			varias.inventory[itemchoice] = 0;
@@ -1056,6 +1087,10 @@ void Item()
 		lineBreak(1);
 		cout << "It takes a while to drink, but you feel a great deal better! Your wounds close." << endl;
 		varias.addX(varias.HitPoints, (((varias.HP*10) - varias.HitPoints) / 2));
+		if (varias.HitPoints > (varias.HP * 10))
+		{
+			varias.HitPoints = (varias.HP * 10);
+		}
 		varias.addX(varias.MP, 20);
 		varias.poison = false;
 		varias.inventory[itemchoice] = 0;
@@ -1069,7 +1104,7 @@ void Item()
 		cout << "It hits and poisons its target!" << endl;
 		varias.inventory[itemchoice] = 0;
 		TE.poison = true;
-		TE.poisonpower = 3;
+		TE.poisonpower += 3;
 		break;
 	}
 
@@ -1102,63 +1137,68 @@ void Negotiate()
 	switch (choice)
 	{
 	case 1:
-		if (lines[0] == true)
+		if ((TE.HP < 60) && (lines[0] == true))
 		{
 			cout << "'You're standing in my way.' Jarl grimaces. 'I need to get to the Western Kingdom.'" << endl;
 			lines[0] = false;
 			fight = false;
+			TE.minusX(TE.ATK, 2);
 		}
-		else if (lines[0] == false)
+		else
 		{
 			cout << "'You're fighting me, aren't  you?' Jarl asks sarcastically, laughing in your face.'" << endl;
 		}
 		break;
 	case 2:
-		if ((varias.lore >= 5) && (lines[1] == true))
+		if ((varias.lore >= 5) && (TE.HP < 50) && (lines[1] == true))
 		{
 			cout << "'Well, you weren't there, were you?' Jarl groans, cursing the King's name under his breath. 'My people aren't wanted there, anymore.'" << endl;
 			lines[1] = false;
 			fight = false;
+			TE.minusX(TE.ATK, 4);
 		}
-		else if((varias.lore <= 5) || (lines[1] == false))
+		else
 		{
 			cout << "'Haven't pieced it together, yet?' Jarl laughs unpleasantly. 'And here I thought I'd left all the proper clues.'" << endl;
 		}
 		break;
 	case 3:
-		if ((varias.lore >= 15) && (lines[2] == true))
+		if ((varias.lore >= 15) && (TE.HP < 40) && (lines[2] == true))
 		{
 			cout << "'The Western Kingdom are the only ones who have the balls to stand up to your precious King, obviously...'" << endl;
 			lines[2] = false;
+			TE.minusX(TE.ATK, 8);
 			fight = false;
 		}
-		else if ((varias.lore <= 15) || (lines[2] == false))
+		else
 		{
 			cout << "'At least the West isn't run by a madman.' Jarl scowls, gripping his sword tighter. 'Your damn King isn't all he seems.'" << endl;
 		}
 		break;
 	case 4:
-		if ((varias.lore >= 20) && (lines[3] == true))
+		if ((varias.lore >= 20) && (TE.HP < 30) && (lines[3] == true))
 		{
 			cout << "'I was hardly even spying on you.' Jarl explains, his grim smile gone. 'I was just trying to protect my homeland.'" << endl;
 			lines[3] = false;
+			TE.minusX(TE.ATK, 15);
 			fight = false;
 		}
-		else if ((varias.lore <= 20) || (lines[3] == false))
+		else
 		{
 			cout << "'I thought I could learn a few extra things...' Jarl replies, his voice dripping venom and sarcasm. 'Maybe not.'" << endl;
 		}
 		break;
 	case 5: 
-		if ((varias.lore >= 30) && (lines[4] == true))
+		if ((varias.lore >= 30) && (TE.HP < 20) && (lines[4] == true))
 		{
 			cout << "Jarl stops for a moment, looking down at his feet. 'The Empire is planning to invade the South. I'm just trying to stop that." << endl;
 			lineBreak(1);
 			cout << "He fills with anger, after a second. 'I won't feel a drop of regret from pushing a puppet like you out of my way!'" << endl;
 			lines[4] = false;
+			TE.minusX(TE.DEF, 15);
 			fight = false;
 		}
-		else if ((varias.lore <= 30) || (lines[4] == false))
+		else
 		{
 			cout << "'If you want to know the truth, ask the King.' Jarl lashes out at you. 'Not like it'll make any difference!'" << endl;
 		}
@@ -1782,7 +1822,7 @@ void bossloop()
 	{
 		lineBreak(1);
 		cout << "Jarl takes damage from poison!" << endl;
-		TE.minusX(TE.HP, (5*TE.poisonpower));
+		TE.minusX(TE.HP, (5 * TE.poisonpower));
 	}
 
 	if (TE.HP <= 0) //IF THE ENEMY IS DEAD
@@ -1796,11 +1836,8 @@ void bossloop()
 	{
 		cout << "Jarl is frozen! He can't attack!" << endl;
 		TE.freeze = false;
-		if (varias.HitPoints <= 0) //ARE YOU DEAD?
-		{
-			gameover();
-		}
-		else if (varias.HitPoints > 0)
+
+		if (varias.HitPoints > 0)
 		{
 			cout << "The battle continues, although Jarl looks much weaker." << endl;
 			if (varias.poison == true) //POISON DMG
@@ -1813,6 +1850,7 @@ void bossloop()
 				}
 			}
 			cout << "You have " << varias.HitPoints << " HP remaining!" << endl;
+
 			if (varias.empowered > 0) //EMPOWERED LOSES STRENGTH
 			{
 				varias.empowered--;
@@ -1825,11 +1863,8 @@ void bossloop()
 	{
 		cout << "Jarl reels from the attack, and fails to strike back!" << endl;
 		TE.stun = false;
-		if (varias.HitPoints <= 0) //ARE YOU DEAD?
-		{
-			gameover();
-		}
-		else if (varias.HitPoints > 0)
+
+		if (varias.HitPoints > 0)
 		{
 			cout << "The battle continues, although Jarl looks much weaker." << endl;
 			if (varias.poison == true) //POISON DMG
@@ -1842,6 +1877,7 @@ void bossloop()
 				}
 			}
 			cout << "You have " << varias.HitPoints << " HP remaining!" << endl;
+
 			if (varias.empowered > 0) //EMPOWERED LOSES STRENGTH
 			{
 				varias.empowered--;
@@ -2030,6 +2066,7 @@ void fightloop()
 	lineBreak(1);
 	cout << "What will you do?" << endl << "1 - Attack!" << endl << "2 - Magic!" << endl << "3 - item!" << endl;
 	cin >> choice;
+	//MAKE CHOICE
 	switch (choice)
 	{
 	case 1:
@@ -2043,7 +2080,7 @@ void fightloop()
 		break;
 	}
 	Sleep(1000);
-
+	//POST-TURN DMG
 	if (varias.light == true)
 	{
 		lineBreak(1);
@@ -2068,7 +2105,7 @@ void fightloop()
 		cout << "The enemy takes damage from poison!" << endl;
 		TE.minusX(TE.HP, (5*TE.poisonpower));
 	}
-
+	//DEBUFFS
 	if(TE.HP <= 0) //IF THE ENEMY IS DEAD
 	{
 		cout << "The enemy collapses. You have won!" << endl;
@@ -2082,11 +2119,8 @@ void fightloop()
 	{
 		cout << "The enemy is frozen! It can't attack!" << endl;
 		TE.freeze = false;
-		if (varias.HitPoints <= 0) //ARE YOU DEAD?
-		{
-			gameover();
-		}
-		else if (varias.HitPoints > 0)
+
+		if (varias.HitPoints > 0)
 		{
 			cout << "The battle continues, although your enemy is weaker." << endl;
 			if (varias.poison == true) //POISON DMG
@@ -2111,11 +2145,8 @@ void fightloop()
 	{
 		cout << "The enemy reels from the attack, and fails to strike back!" << endl;
 		TE.stun = false;
-		if (varias.HitPoints <= 0) //ARE YOU DEAD?
-		{
-			gameover();
-		}
-		else if (varias.HitPoints > 0)
+
+		if (varias.HitPoints > 0)
 		{
 			cout << "The battle continues, although your enemy is weaker." << endl;
 			if (varias.poison == true) //POISON DMG
@@ -2149,7 +2180,7 @@ void fightloop()
 				varias.block = false;
 				varias.ShieldHp = 10;
 			}
-			else //IF IT DOESNT
+			else if(varias.ShieldHp > 0) //IF IT DOESNT
 			{
 				cout << "You successfully block the attack, and your shield looks like it can take a few more hits!" << endl;
 			}
@@ -2162,7 +2193,7 @@ void fightloop()
 			{
 				cout << "It deals " << (TE.ATK - varias.DEF) << " Points of damage to you!" << endl;
 				varias.minusX(varias.HitPoints, (TE.ATK - varias.DEF));
-				if (TE.trait == "Poison" && varias.poison == false)
+				if (TE.trait == 3 && varias.poison == false)
 				{
 					cout << "You are poisoned!" << endl;
 					varias.poison = true;
@@ -2171,13 +2202,14 @@ void fightloop()
 			else //IF YOU'RE BEEFY ENOUGH, TAKE NO DMG
 			{
 				cout << "Your armor holds strong, and you take no damage!" << endl;
-				if (TE.trait == "Poison" && varias.poison == false)
+				if (TE.trait == 3 && varias.poison == false)
 				{
 					cout << "You are poisoned!" << endl;
 					varias.poison = true;
 				}
 			}
 		}
+
 		if (varias.HitPoints <= 0) //ARE YOU DEAD?
 		{
 			gameover();
@@ -2189,6 +2221,10 @@ void fightloop()
 			{
 				varias.minusX(varias.HitPoints, 5);
 				cout << "You take damage from poison!" << endl;
+				if (varias.HitPoints <= 0)
+				{
+					gameover();
+				}
 			}
 			cout << "You have " << varias.HitPoints << " HP remaining!" << endl;
 			if (varias.empowered > 0) //EMPOWERED LOSES STRENGTH
