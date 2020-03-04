@@ -526,7 +526,7 @@ void levelup()
 	varias.addX(varias.HP, 1); //10 MAX HP GAINED
 	if (varias.HP > 20)
 	{
-		varias.HP == 20; //LETS NOT GET CRAZY, 200 IS ENOUGH HP
+		varias.HP = 20; //LETS NOT GET CRAZY, 200 IS ENOUGH HP
 	}
 	varias.level++;
 	if (varias.skillobtain == true)
@@ -976,7 +976,8 @@ void Item()
 	//7 = shield
 	//8 = glass blade
 	//9 = beastman horn
-	//10 = large HP
+	//10 = large HP(manalife)
+	//11 = poison bomb
 	lineBreak(1);
 	for (int i = 0; i < 15; i++)
 	{
@@ -1161,6 +1162,18 @@ void Item()
 
 }
 
+void input(int obj)
+{	
+	for (int i = 0; i <= 15; i++)
+	{
+		if (varias.inventory[i] == 0)
+		{
+			varias.inventory[i] = obj;
+			i = 16;
+		}
+	}
+}
+
 void Negotiate()
 {
 	lineBreak(1);
@@ -1321,14 +1334,7 @@ void treasure(int treasure)
 	{
 	case 1:
 		cout << "Someone must have lost a health potion! You pick it up." << endl;
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 1;
-				i = 16;
-			}
-		}
+		input(1);
 		break;
 	case 2:
 		cout << "Taking in your surroundings, you feel inspired, and level up!" << endl;
@@ -1362,14 +1368,7 @@ void treasure(int treasure)
 	case 4:
 		cout << "You find a rare foregin glassblade! You add it to your inventory" << endl;
 		//LORE
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 8;
-				i = 16;
-			}
-		}
+		input(8);
 		break;
 	case 5:
 		cout << "You find a burning potion, and apply it to your blade!" << endl;
@@ -1602,106 +1601,47 @@ string loot()
 		return " one gold ";
 		varias.addX(varias.GP, 1);
 		break;
-	case 1:
+	case 1: //RAT
 		varias.addX(varias.GP, 10);
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 1;
-				i = 16;
-			}
-		}
 		lineBreak(1);
 		cout << "You level up!" << endl;
 		levelup();
-		return " ten gold and a health potion ";
+		return " ten gold ";
 		break;
-	case 2:
+	case 2: //GOB
 		varias.addX(varias.GP, 15);
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 5;
-				i = 16;
-			}
-		}
+		input(5);
 		lineBreak(1);
 		cout << "You level up!" << endl;
 		levelup();
 		return " fifteen gold and a hammer ";
 		break;
-	case 3:
+	case 3: //OGRE
 		varias.addX(varias.GP, 20);
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 2;
-				i = 16;
-			}
-		}
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 7;
-				i = 16;
-			}
-		}
+		input(7);
+		input(2);
 		lineBreak(1);
 		cout << "You level up!" << endl;
 		levelup();
 		return " twenty gold, a mana potion and a sturdy shield ";
 		break;
-	case 4:
+	case 4: //NYPMH
 		varias.addX(varias.GP, 10);
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 1;
-				i = 16;
-			}
-		}
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 11;
-				i = 16;
-			}
-		}
+		input(11);
 		lineBreak(1);
 		cout << "You level up!" << endl;
 		levelup();
-		return " ten gold, a poison bomb, and a health potion ";
+		return " ten gold and a poison bomb ";
 		break;
-	case 5:
+	case 5: //BEAST
 		varias.addX(varias.GP, 10);
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 1;
-				i = 16;
-			}
-		}
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 9;
-				i = 16;
-			}
-		}
+		input(9);
 		lineBreak(1);
 		cout << "You level up!" << endl;
 		levelup();
-		return " ten gold, a health potion and a beastman horn ";
+		return " ten gold and a beastman horn ";
 		break;
-	case 6:
+	case 6: //BANDIT
 		varias.addX(varias.GP, 20);
 		varias.spellbook[2] = 2;
 		varias.spellbook[3] = 3;
@@ -1710,66 +1650,37 @@ string loot()
 		levelup();
 		return " twenty gold, and a spellbook containing [ICE STORM] and [LEAF BLADE] ";
 		break;
-	case 7:
+	case 7: //EAGLE
 		varias.addX(varias.GP, 20);
 		varias.spellbook[4] = 4;
 		varias.spellbook[5] = 5;
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 9;
-				i = 16;
-			}
-		}
+		input(10);
 		lineBreak(1);
 		cout << "You level up!" << endl;
 		levelup();
 		return " twenty gold, a ManaLife potion, and a spellbook containing [DEATH STRIKE] and [OBLITERATE] ";
 		break;
-	case 8:
+	case 8: //CORPSE
 		varias.addX(varias.GP, 50);
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 4;
-				i = 16;
-			}
-		}
+		input(4);
 		cout << "You level up!" << endl;
 		levelup();
 		varias.spellbook[7] = 7;
 		return " fifty gold, a golden cross, and a spellbook containing [LIGHT] ";
 		break;
-	case 9:		
+	case 9: //DRAKE
 		varias.addX(varias.GP, 10);
 		swordchoice();
 		//DO THE SWORDS
 		return " ten gold ";
 		break;
-	case 10:
-
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 1;
-				i = 16;
-			}
-		}
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 2;
-				i = 16;
-			}
-		}
+	case 10: //DEMON + FLYING BEAST
+		varias.addX(varias.GP, 20);
+		input(1);
 		lineBreak(1);
 		cout << "You level up!" << endl;
 		levelup();
-		return " ten gold, a health potion and a mana potion ";
+		return " twenty gold and a health potion ";
 		break;
 	}
 }
