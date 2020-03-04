@@ -21,6 +21,8 @@ bool cave2 = false;
 bool cave3 = false;
 bool line[4] = { true, false, false, false };
 bool lines[5] = { true, true, true, true, true };
+int inv = 0;
+int dropped = 0;
 
 int levelone[5][5] = { 1,  2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25};
 bool levelonebool[5][5] = { true, true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true };
@@ -71,7 +73,7 @@ public:
 	//LESS IMPORTANT
 	string name = "spaghetti";
 	string sword = "pasta";
-	int inventory[15];
+	int inventory[15][2];
 	int spellbook[8];
 	//CONDITIONS
 	bool poison = false;
@@ -345,14 +347,14 @@ void standinhero()
 	varias.GP = 0;
 	varias.kills = 0;
 	varias.lore = 0;
-	varias.inventory[0] = 1;
-	varias.inventory[1] = 1;
-	varias.inventory[2] = 2;
-	varias.inventory[3] = 2;
-	varias.inventory[4] = 6;
+	varias.inventory[0][0] = 1;
+	varias.inventory[1][0] = 1;
+	varias.inventory[2][0] = 2;
+	varias.inventory[3][0] = 2;
+	varias.inventory[4][0] = 6;
 	for (int i = 5; i <= 14; i++)
 	{
-		varias.inventory[i] = 0;
+		varias.inventory[i][0] = 0;
 	}
 	varias.spellbook[0] = 0;
 	varias.spellbook[1] = 1;
@@ -526,7 +528,7 @@ void levelup()
 	varias.addX(varias.HP, 1); //10 MAX HP GAINED
 	if (varias.HP > 20)
 	{
-		varias.HP == 20; //LETS NOT GET CRAZY, 200 IS ENOUGH HP
+		varias.HP = 20; //LETS NOT GET CRAZY, 200 IS ENOUGH HP
 	}
 	varias.level++;
 	if (varias.skillobtain == true)
@@ -614,6 +616,32 @@ void skillobtain()
 		varias.skill = 4;
 		varias.skillobtain = false;
 		cout << "You have learnt the skill 'Crush' (Deal bonus damage to enemies with less HP than you)" << endl;
+	}
+}
+
+void inventoryput(int obj)
+{
+	inv = 0;
+	for (int i = 0; i <= 15; i++)
+	{
+		if ((varias.inventory[i][0] == obj) && (varias.inventory[i][1] == 0))
+		{
+			varias.inventory[i][1] = obj;
+			i = 16;
+			inv = 1; //did it find anything? 
+		}
+	}
+
+	if (inv == 0)
+	{
+		for (int i = 0; i <= 15; i++)
+		{
+			if (varias.inventory[i] == 0)
+			{
+				varias.inventory[i][0] = obj;
+				i = 16;
+			}
+		}
 	}
 }
 
@@ -980,49 +1008,94 @@ void Item()
 	lineBreak(1);
 	for (int i = 0; i < 15; i++)
 	{
-		switch (varias.inventory[i])
+		if (varias.inventory[i][1] == 0)
 		{
-		case 0:
-			break;
-		case 1:
-			cout << i << "- A health potion (Heals a sixth of your HP, and cures poison)" << endl;
-			break;
-		case 2:
-			cout << i << "- A mana potion (Replenishes 10 Mana)" << endl;
-			break;
-		case 3:
-			cout << i << "- A throwing knife (Cripples far away enemies)" << endl;
-			break;
-		case 4:
-			cout << i << "- A cross (Useful against undead and demons)" << endl;
-			break;
-		case 5:
-			cout << i << "- A hammer (For breaking armor)" << endl;
-			break;
-		case 6:
-			cout << i << "- Your magic scroll (You have no idea what it does)" << endl;
-			break;
-		case 7:
-			cout << i << "- A sturdy shield (Blocks damage, and gives you a chance to use an HP poiton)" << endl;
-			break;
-		case 8:
-			cout << i << "- A fragile glass blade (Allows you to attack twice)" << endl;
-			break;
-		case 9:
-			cout << i << "- A beastman horn (Allows for a small follow-up attack)" << endl;
-			break;
-		case 10:
-			cout << i << "- A ManaLife potion (Heals half your missing HP, 20 mana, and cures poison)" << endl;
-			break;
-		case 11:
-			cout << i << "- A poison bomb (Applies a large poison to the enemy)" << endl;
-			break;
+			switch (varias.inventory[i][0])
+			{
+			case 0:
+				break;
+			case 1:
+				cout << i << "- A health potion (Heals a sixth of your HP, and cures poison)" << endl;
+				break;
+			case 2:
+				cout << i << "- A mana potion (Replenishes 10 Mana)" << endl;
+				break;
+			case 3:
+				cout << i << "- A throwing knife (Cripples far away enemies)" << endl;
+				break;
+			case 4:
+				cout << i << "- A cross (Useful against undead and demons)" << endl;
+				break;
+			case 5:
+				cout << i << "- A hammer (For breaking armor)" << endl;
+				break;
+			case 6:
+				cout << i << "- Your magic scroll (You have no idea what it does)" << endl;
+				break;
+			case 7:
+				cout << i << "- A sturdy shield (Blocks damage, and gives you a chance to use an HP poiton)" << endl;
+				break;
+			case 8:
+				cout << i << "- A fragile glass blade (Allows you to attack twice)" << endl;
+				break;
+			case 9:
+				cout << i << "- A beastman horn (Allows for a small follow-up attack)" << endl;
+				break;
+			case 10:
+				cout << i << "- A ManaLife potion (Heals half your missing HP, 20 mana, and cures poison)" << endl;
+				break;
+			case 11:
+				cout << i << "- A poison bomb (Applies a large poison to the enemy)" << endl;
+				break;
+			}
+		}
+		else
+		{
+			switch (varias.inventory[i][0])
+			{
+			case 0:
+				break;
+			case 1:
+				cout << i << "- A health potion (Heals a sixth of your HP, and cures poison) * 2" << endl;
+				break;
+			case 2:
+				cout << i << "- A mana potion (Replenishes 10 Mana) * 2" << endl;
+				break;
+			case 3:
+				cout << i << "- A throwing knife (Cripples far away enemies) * 2" << endl;
+				break;
+			case 4:
+				cout << i << "- A cross (Useful against undead and demons) * 2" << endl;
+				break;
+			case 5:
+				cout << i << "- A hammer (For breaking armor) * 2" << endl;
+				break;
+			case 6:
+				cout << i << "- Your magic scroll (You have no idea what it does) * 2" << endl;
+				break;
+			case 7:
+				cout << i << "- A sturdy shield (Blocks damage, and gives you a chance to use an HP poiton) * 2" << endl;
+				break;
+			case 8:
+				cout << i << "- A fragile glass blade (Allows you to attack twice) * 2" << endl;
+				break;
+			case 9:
+				cout << i << "- A beastman horn (Allows for a small follow-up attack) * 2" << endl;
+				break;
+			case 10:
+				cout << i << "- A ManaLife potion (Heals half your missing HP, 20 mana, and cures poison) * 2" << endl;
+				break;
+			case 11:
+				cout << i << "- A poison bomb (Applies a large poison to the enemy) * 2" << endl;
+				break;
+			}
 		}
 	}
 	Sleep(1000);
 	cout << "What will you use?" << endl;
 	cin >> itemchoice;
-	switch (varias.inventory[itemchoice])
+	dropped = 0;
+	switch (varias.inventory[itemchoice][0])
 	{
 	case 0:
 		break;
@@ -1033,7 +1106,8 @@ void Item()
 		varias.poison = false;
 		cout << "The item has been used up!" << endl;
 		Sleep(1000);
-		varias.inventory[itemchoice] = 0;
+		varias.inventory[itemchoice][0] = 0;
+		dropped = 1;
 		break;
 	case 2:
 		Sleep(500);
@@ -1041,7 +1115,8 @@ void Item()
 		varias.addX(varias.MP, 10);
 		cout << "The item has been used up!" << endl;
 		Sleep(1000);
-		varias.inventory[itemchoice] = 0;
+		varias.inventory[itemchoice][0] = 0;
+		dropped = 2;
 		break;
 	case 3:
 		cout << "You lob your throwing knife at the enemy!" << endl;
@@ -1054,7 +1129,8 @@ void Item()
 		}
 		cout << "The item has been used up!" << endl;
 		Sleep(1000);
-		varias.inventory[itemchoice] = 0;
+		varias.inventory[itemchoice][0] = 0;
+		dropped = 3;
 		break;
 	case 4:
 		cout << "You bear your cross against the enemy!" << endl;
@@ -1065,7 +1141,8 @@ void Item()
 			TE.minusX(TE.HP, 20);
 			cout << "The item has been used up!" << endl;
 			Sleep(1000);
-			varias.inventory[itemchoice] = 0;
+			varias.inventory[itemchoice][0] = 0;
+			dropped = 4;
 		}
 		else
 		{
@@ -1082,7 +1159,8 @@ void Item()
 			TE.minusX(TE.HP, (TE.HP / 4));
 			Sleep(1000);
 			cout << "The item has been used up!" << endl;
-			varias.inventory[itemchoice] = 0;
+			varias.inventory[itemchoice][0] = 0;
+			dropped = 5;
 		}
 		TE.minusX(TE.HP, varias.ATK);
 		break;
@@ -1096,7 +1174,8 @@ void Item()
 		lineBreak(1);
 		cout << "The item has been used up!" << endl;
 		Sleep(1000);
-		varias.inventory[itemchoice] = 0;
+		varias.inventory[itemchoice][0] = 0;
+		dropped = 6;
 		break;
 	case 7:
 		if (varias.block != true)
@@ -1106,19 +1185,21 @@ void Item()
 			varias.block = true;
 			for (int i = 0; i <= 15; i++)
 			{
-				if (varias.inventory[i] == 1)
+				if (varias.inventory[i][0] == 1)
 				{
-					varias.inventory[i] = 0;
-					i = 16;
+					varias.inventory[i][0] = 0;
 					cout << "You take the opportunity to also swig a health potion, and feel better!" << endl;
-					varias.addX(varias.HitPoints, ((varias.HP*10) / 6));
-					if (varias.HitPoints > (varias.HP * 10))
+					varias.addX(varias.HitPoints, (((varias.HP * 10) - varias.HitPoints) / 5));
+					if (varias.inventory[i][1] != 0)
 					{
-						varias.HitPoints = (varias.HP * 10);
+						varias.inventory[i][1] = 0;
+						varias.inventory[i][0] = 1;
 					}
+					i = 16;
 				}
 			}
-			varias.inventory[itemchoice] = 0;
+			varias.inventory[itemchoice][0] = 0;
+			dropped = 7;
 		}
 		break;
 	case 8:
@@ -1128,15 +1209,17 @@ void Item()
 		Sleep(500);
 		cout << "After dealing amazing damage, it shatters! You follow up with " << varias.sword << "!" << endl;
 		Attack();
-		varias.inventory[itemchoice] = 0;
+		varias.inventory[itemchoice][0] = 0;
+		dropped = 7;
 		break;
 	case 9:
 		lineBreak(1);
 		cout << "You stab the horn into the enemy's body, wounding them!" << endl;
 		TE.minusX(TE.HP, (varias.ATK));
-		varias.inventory[itemchoice] = 0;
+		varias.inventory[itemchoice][0] = 0;
 		cout << "The horn is stuck into the enemy; you then attack!" << endl;
 		Attack();
+		dropped = 9;
 		break;
 	case 10:
 		lineBreak(1);
@@ -1144,21 +1227,28 @@ void Item()
 		varias.addX(varias.HitPoints, (((varias.HP*10) - varias.HitPoints) / 2));
 		varias.addX(varias.MP, 20);
 		varias.poison = false;
-		varias.inventory[itemchoice] = 0;
+		varias.inventory[itemchoice][0] = 0;
 		Sleep(1000);
 		cout << "You toss the bottle aside." << endl;
+		dropped = 10;
 		break;
 	case 11:
 		lineBreak(1);
 		cout << "You lob the poison bomb!" << endl;
 		Sleep(1000);
 		cout << "It hits and poisons its target!" << endl;
-		varias.inventory[itemchoice] = 0;
+		varias.inventory[itemchoice][0] = 0;
 		TE.poison = true;
 		TE.poisonpower += 3;
+		dropped = 11;
 		break;
 	}
 
+	if (varias.inventory[itemchoice][1] != 0)
+	{
+		varias.inventory[itemchoice][1] = 0;
+		varias.inventory[itemchoice][0] = dropped;
+	}
 }
 
 void Negotiate()
@@ -1321,14 +1411,7 @@ void treasure(int treasure)
 	{
 	case 1:
 		cout << "Someone must have lost a health potion! You pick it up." << endl;
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 1;
-				i = 16;
-			}
-		}
+		inventoryput(1);
 		break;
 	case 2:
 		cout << "Taking in your surroundings, you feel inspired, and level up!" << endl;
@@ -1362,14 +1445,7 @@ void treasure(int treasure)
 	case 4:
 		cout << "You find a rare foregin glassblade! You add it to your inventory" << endl;
 		//LORE
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 8;
-				i = 16;
-			}
-		}
+		inventoryput(8);
 		break;
 	case 5:
 		cout << "You find a burning potion, and apply it to your blade!" << endl;
@@ -1389,12 +1465,18 @@ void trap(int trap)
 		varias.minusX(varias.HitPoints, 4);
 		for (int i = 0; i <= 15; i++)
 		{
-			if (varias.inventory[i] == 1)
+			if (varias.inventory[i][0] == 1)
 			{
-				varias.inventory[i] = 0;
-				i = 16;
+				varias.inventory[i][0] = 0;
+				i = 16;	
+				if (varias.inventory[i][1] == 1)
+				{
+					varias.inventory[itemchoice][1] = 0;
+					varias.inventory[itemchoice][0] = 1;
+				}
 			}
 		}
+
 		break;
 	case 2:
 		cout << "A swarm of bats attack you!" << endl;
@@ -1480,14 +1562,7 @@ void trap(int trap)
 				cout << "You succeed! The walls melts away like it was nothing, and you are rewarded with a ManaLife potion, and level up!" << endl;
 				cout << "You also take the time to sort out your inventory." << endl;
 				drop();
-				for (int i = 0; i <= 15; i++)
-				{
-					if (varias.inventory[i] == 0)
-					{
-						varias.inventory[i] = 9;
-						i = 16;
-					}
-				}
+				inventoryput(9);
 				levelup();
 			}
 			else
@@ -1598,110 +1673,51 @@ string loot()
 {
 	switch (TE.lootlevel)
 	{
-	case 0:
+	case 0: //GREMLIN
 		return " one gold ";
 		varias.addX(varias.GP, 1);
 		break;
-	case 1:
+	case 1:  //RAT
 		varias.addX(varias.GP, 10);
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 1;
-				i = 16;
-			}
-		}
 		lineBreak(1);
 		cout << "You level up!" << endl;
 		levelup();
-		return " ten gold and a health potion ";
+		return " ten gold ";
 		break;
-	case 2:
+	case 2: //GOBLIN
 		varias.addX(varias.GP, 15);
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 5;
-				i = 16;
-			}
-		}
+		inventoryput(5);
 		lineBreak(1);
 		cout << "You level up!" << endl;
 		levelup();
 		return " fifteen gold and a hammer ";
 		break;
-	case 3:
+	case 3: //OGRE
 		varias.addX(varias.GP, 20);
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 2;
-				i = 16;
-			}
-		}
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 7;
-				i = 16;
-			}
-		}
+		inventoryput(5);
+		inventoryput(7);
 		lineBreak(1);
 		cout << "You level up!" << endl;
 		levelup();
 		return " twenty gold, a mana potion and a sturdy shield ";
 		break;
-	case 4:
+	case 4: //FOREST SPIRIT
 		varias.addX(varias.GP, 10);
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 1;
-				i = 16;
-			}
-		}
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 11;
-				i = 16;
-			}
-		}
+		inventoryput(11);
 		lineBreak(1);
 		cout << "You level up!" << endl;
 		levelup();
-		return " ten gold, a poison bomb, and a health potion ";
+		return " ten gold and a poison bomb ";
 		break;
-	case 5:
+	case 5: //BEASTMAN
 		varias.addX(varias.GP, 10);
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 1;
-				i = 16;
-			}
-		}
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 9;
-				i = 16;
-			}
-		}
+		inventoryput(9);
 		lineBreak(1);
 		cout << "You level up!" << endl;
 		levelup();
-		return " ten gold, a health potion and a beastman horn ";
+		return " ten gold and a beastman horn ";
 		break;
-	case 6:
+	case 6: //BANDIT (BOSS)
 		varias.addX(varias.GP, 20);
 		varias.spellbook[2] = 2;
 		varias.spellbook[3] = 3;
@@ -1710,66 +1726,36 @@ string loot()
 		levelup();
 		return " twenty gold, and a spellbook containing [ICE STORM] and [LEAF BLADE] ";
 		break;
-	case 7:
+	case 7: //G. FALCON (BOSS)
 		varias.addX(varias.GP, 20);
 		varias.spellbook[4] = 4;
 		varias.spellbook[5] = 5;
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 9;
-				i = 16;
-			}
-		}
+		inventoryput(9);
 		lineBreak(1);
 		cout << "You level up!" << endl;
 		levelup();
 		return " twenty gold, a ManaLife potion, and a spellbook containing [DEATH STRIKE] and [OBLITERATE] ";
 		break;
-	case 8:
+	case 8: //G. CORPSE (BOSS)
 		varias.addX(varias.GP, 50);
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 4;
-				i = 16;
-			}
-		}
+		inventoryput(4);
 		cout << "You level up!" << endl;
 		levelup();
 		varias.spellbook[7] = 7;
 		return " fifty gold, a golden cross, and a spellbook containing [LIGHT] ";
 		break;
-	case 9:		
+	case 9: //DRAKE (BOSS)
 		varias.addX(varias.GP, 10);
 		swordchoice();
 		//DO THE SWORDS
 		return " ten gold ";
 		break;
-	case 10:
-
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 1;
-				i = 16;
-			}
-		}
-		for (int i = 0; i <= 15; i++)
-		{
-			if (varias.inventory[i] == 0)
-			{
-				varias.inventory[i] = 2;
-				i = 16;
-			}
-		}
+	case 10: //FLYING BEAST + DEMON
+		inventoryput(1);
 		lineBreak(1);
 		cout << "You level up!" << endl;
 		levelup();
-		return " ten gold, a health potion and a mana potion ";
+		return " ten gold and a health potion ";
 		break;
 	}
 }
@@ -1780,7 +1766,7 @@ void drop()
 	cout << "You can take the time to sort out your inventory." << endl << "Is there anything you would like to drop?" << endl;
 	for (int i = 0; i < 15; i++)
 	{
-		switch (varias.inventory[i])
+		switch (varias.inventory[i][0])
 		{
 		case 0:
 			break;
@@ -1816,7 +1802,13 @@ void drop()
 		lineBreak(1);
 		cout << "Type 20 to drop nothing." << endl;
 		cin >> choice;
-		varias.inventory[choice] = 0;
+		dropped = varias.inventory[choice][0];
+		varias.inventory[choice][0] = 0;
+		if (varias.inventory[choice][1] =! 0)
+		{
+			varias.inventory[itemchoice][1] = 0;
+			varias.inventory[itemchoice][0] = dropped;
+		}
 		lineBreak(1);
 		cout << "Would you like to drop anything else? 0 - yes." << endl;
 		cin >> choice;
