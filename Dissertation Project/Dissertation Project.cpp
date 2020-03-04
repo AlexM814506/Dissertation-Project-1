@@ -42,6 +42,7 @@ int main();
 void fightloop();
 void drop();
 void finalboss();
+void skillobtain();
 
 //CLASSES
 
@@ -90,6 +91,9 @@ public:
 	int mapperc = 0;
 	int modifier = 0;
 	bool TESTER = 0;
+	bool skillobtain = true;
+	int skill = 0;
+	int level = 0;
 	//POSITIONALS
 	int X = 0;
 	int Y = 0;
@@ -114,6 +118,7 @@ public:
 	};
 	int ATK = 0;
 	int HP = 0;
+	int THP = 0;
 	int DEF = 0;
 	int MP = 0;
 	int MAG = 0;
@@ -197,6 +202,7 @@ void EnemyCreator(int level)
 		//making sure theyre both at 0
 		TE.addX(TE.ATK, 10);
 		TE.addX(TE.HP, 10);
+		TE.THP = 10;
 		TE.level = "Level 1 Rat";
 		TE.trait = 1;
 		TE.lootlevel = 1;
@@ -207,6 +213,7 @@ void EnemyCreator(int level)
 		//making sure theyre both at 0
 		TE.addX(TE.ATK, 15);
 		TE.addX(TE.HP, 15);
+		TE.THP = 15;
 		TE.level = "Level 2 Goblin";
 		TE.trait = 1;
 		TE.lootlevel = 2;
@@ -217,6 +224,7 @@ void EnemyCreator(int level)
 		//making sure theyre both at 0
 		TE.addX(TE.ATK, 20);
 		TE.addX(TE.HP, 30);
+		TE.THP = 30;
 		TE.level = "Level 3 Armored Ogre";
 		TE.trait = 2;
 		TE.lootlevel = 3;
@@ -227,6 +235,7 @@ void EnemyCreator(int level)
 		//making sure theyre both at 0
 		TE.addX(TE.ATK, 25);
 		TE.addX(TE.HP, 20);
+		TE.THP = 20;
 		TE.level = "Level 4 Demon";
 		TE.trait = 5;
 		TE.lootlevel = 10;
@@ -237,6 +246,7 @@ void EnemyCreator(int level)
 		//making sure theyre both at 0
 		TE.addX(TE.ATK, 20);
 		TE.addX(TE.HP, 25);
+		TE.THP = 25;
 		TE.level = "Level 5 Flying Beast";
 		TE.trait = 4;
 		TE.lootlevel = 10;
@@ -247,6 +257,7 @@ void EnemyCreator(int level)
 		//making sure theyre both at 0
 		TE.addX(TE.ATK, 25);
 		TE.addX(TE.HP, 40);
+		TE.THP = 40;
 		TE.level = "Level 6 Hell-Drake";
 		TE.trait = 5;
 		TE.lootlevel = 9;
@@ -257,6 +268,7 @@ void EnemyCreator(int level)
 		//making sure theyre both at 0
 		TE.addX(TE.ATK, 4);
 		TE.addX(TE.HP, 10);
+		TE.THP = 10;
 		TE.level = "Level 2 Gremlin";
 		TE.trait = 1;
 		TE.lootlevel = 0;
@@ -267,6 +279,7 @@ void EnemyCreator(int level)
 		//making sure theyre both at 0
 		TE.addX(TE.ATK, 15);
 		TE.addX(TE.HP, 30);
+		TE.THP = 30;
 		TE.level = "Level 3 Human Bandit";
 		TE.trait = 3;
 		TE.lootlevel = 6;
@@ -277,6 +290,7 @@ void EnemyCreator(int level)
 		//making sure theyre both at 0
 		TE.addX(TE.ATK, 18);
 		TE.addX(TE.HP, 30);
+		TE.THP = 30;
 		TE.level = "Level 2 Forest Spirit";
 		TE.trait = 6;
 		TE.lootlevel = 4;
@@ -287,6 +301,7 @@ void EnemyCreator(int level)
 		//making sure theyre both at 0
 		TE.addX(TE.ATK, 30);
 		TE.addX(TE.HP, 20);
+		TE.THP = 20;
 		TE.level = "Level 3 Beastman";
 		TE.trait = 1;
 		TE.lootlevel = 5;
@@ -297,6 +312,7 @@ void EnemyCreator(int level)
 		//making sure theyre both at 0
 		TE.addX(TE.ATK, 20);
 		TE.addX(TE.HP, 30);
+		TE.THP = 30;
 		TE.level = "Level 5 Great Falcon";
 		TE.trait = 4;
 		TE.lootlevel = 7;
@@ -307,6 +323,7 @@ void EnemyCreator(int level)
 		//making sure theyre both at 0
 		TE.addX(TE.ATK, 20);
 		TE.addX(TE.HP, 40);
+		TE.THP = 40;
 		TE.level = "Level 7 Great Corpse";
 		TE.trait = 5;
 		TE.lootlevel = 8;
@@ -501,12 +518,21 @@ void fightstarter(int level)
 
 void levelup()
 {
-	varias.addX(varias.HitPoints, 5); //5 HP HEALED
-	varias.addX(varias.MP, 5);
+	varias.addX(varias.HitPoints, 1); //1 HP HEALED
+	varias.addX(varias.MP, 1); //1 MANA RECOVERED
 	varias.addX(varias.MAG, 1);
 	varias.addX(varias.ATK, 1);
 	varias.addX(varias.DEF, 1);
 	varias.addX(varias.HP, 1); //10 MAX HP GAINED
+	if (varias.HP > 20)
+	{
+		varias.HP == 20; //LETS NOT GET CRAZY, 200 IS ENOUGH HP
+	}
+	varias.level++;
+	if (varias.skillobtain == true)
+	{
+		skillobtain();
+	}
 }
 
 void bossmaker()
@@ -556,6 +582,39 @@ void mapthree()
 		cout << levelthreechar[i][0] << levelthreechar[i][1] << levelthreechar[i][2] << levelthreechar[i][3] << levelthreechar[i][4] << levelthreechar[i][5] << levelthreechar[i][6] << endl;
 	}
 	levelthreechar[varias.Y][varias.X] = 'C';
+}
+
+void skillobtain()
+{
+
+	if ((varias.ATK > 20) && (varias.ATK > varias.MAG) && (varias.ATK > varias.DEF) && (varias.ATK > varias.HP))
+	{
+		lineBreak(2);
+		varias.skill = 1;
+		varias.skillobtain = false;
+		cout << "You have learnt the skill 'Assassin' (Instantly executes enemies under 5 HP)" << endl;
+	}
+	else if ((varias.MAG > 20) && (varias.MAG > varias.ATK) && (varias.MAG > varias.DEF) && (varias.MAG > varias.HP))
+	{
+		lineBreak(2);
+		varias.skill = 2;
+		varias.skillobtain = false;
+		cout << "You have learnt the skill 'Mana Spring' (Replenishes some MP every turn)" << endl;
+	}
+	else if ((varias.DEF > 20) && (varias.DEF > varias.MAG) && (varias.DEF > varias.ATK) && (varias.DEF > varias.HP))
+	{
+		lineBreak(2);
+		varias.skill = 3;
+		varias.skillobtain = false;
+		cout << "You have learnt the skill 'Wall of Pain' (Bounce back some damage)" << endl;
+	}
+	else if ((varias.HP > 20) && (varias.HP > varias.MAG) && (varias.HP > varias.DEF) && (varias.HP > varias.ATK))
+	{
+		lineBreak(2);
+		varias.skill = 4;
+		varias.skillobtain = false;
+		cout << "You have learnt the skill 'Crush' (Deal bonus damage to enemies with less HP than you)" << endl;
+	}
 }
 
 //COMBAT FUNCTIONS
@@ -929,7 +988,7 @@ void Item()
 			cout << i << "- A health potion (Heals a sixth of your HP, and cures poison)" << endl;
 			break;
 		case 2:
-			cout << i << "- A mana potion (Replenishes 5 Mana)" << endl;
+			cout << i << "- A mana potion (Replenishes 10 Mana)" << endl;
 			break;
 		case 3:
 			cout << i << "- A throwing knife (Cripples far away enemies)" << endl;
@@ -953,7 +1012,7 @@ void Item()
 			cout << i << "- A beastman horn (Allows for a small follow-up attack)" << endl;
 			break;
 		case 10:
-			cout << i << "- A ManaLife potion (Heals half your missing HP and 20 mana, and cures poison)" << endl;
+			cout << i << "- A ManaLife potion (Heals half your missing HP, 20 mana, and cures poison)" << endl;
 			break;
 		case 11:
 			cout << i << "- A poison bomb (Applies a large poison to the enemy)" << endl;
@@ -970,11 +1029,7 @@ void Item()
 	case 1:
 		Sleep(500);
 		cout << "you swig your health potion, and feel better!" << endl;
-		varias.addX(varias.HitPoints, ((varias.HP*10) / 6));
-		if (varias.HitPoints > (varias.HP * 10))
-		{
-			varias.HitPoints = (varias.HP * 10);
-		}
+		varias.addX(varias.HitPoints, (((varias.HP * 10) - varias.HitPoints) / 5));
 		varias.poison = false;
 		cout << "The item has been used up!" << endl;
 		Sleep(1000);
@@ -983,7 +1038,7 @@ void Item()
 	case 2:
 		Sleep(500);
 		cout << "You take your mana potion" << endl << "It tastes awful, but you can feel your strength returning!" << endl;
-		varias.addX(varias.MP, 5);
+		varias.addX(varias.MP, 10);
 		cout << "The item has been used up!" << endl;
 		Sleep(1000);
 		varias.inventory[itemchoice] = 0;
@@ -1087,10 +1142,6 @@ void Item()
 		lineBreak(1);
 		cout << "It takes a while to drink, but you feel a great deal better! Your wounds close." << endl;
 		varias.addX(varias.HitPoints, (((varias.HP*10) - varias.HitPoints) / 2));
-		if (varias.HitPoints > (varias.HP * 10))
-		{
-			varias.HitPoints = (varias.HP * 10);
-		}
 		varias.addX(varias.MP, 20);
 		varias.poison = false;
 		varias.inventory[itemchoice] = 0;
@@ -1779,6 +1830,12 @@ void drop()
 
 void bossloop()
 {
+	if (varias.skill == 2)
+	{
+		lineBreak(1);
+		cout << "Your skill 'Mana Spring' activates, and you replenish some of your mana!" << endl;
+		varias.addX(varias.MP, (varias.MP / 10));
+	}
 	fight = true;
 	lineBreak(1);
 	cout << "What will you do?" << endl << "1 - Attack!" << endl << "2 - Magic!" << endl << "3 - item!" << endl << "4 - Negotiate!" << endl;
@@ -1823,6 +1880,22 @@ void bossloop()
 		lineBreak(1);
 		cout << "Jarl takes damage from poison!" << endl;
 		TE.minusX(TE.HP, (5 * TE.poisonpower));
+	}
+
+	//ASSASSIN
+	if ((varias.skill == 1) && (TE.HP <= 5))
+	{
+		lineBreak(1);
+		cout << "Your skill 'Assassin' kicks in, and you deliver a brutal strike to Jarl!" << endl;
+		TE.HP = 0;
+	}
+
+	//CRUSH
+	if ((varias.skill == 4) && ((varias.HP * 1.5) > TE.THP))
+	{
+		lineBreak(1);
+		cout << "Your skill 'Crush' kicks in, and you slam Jarl with your shoulder!" << endl;
+		TE.minusX(TE.HP, (varias.HP / 5));
 	}
 
 	if (TE.HP <= 0) //IF THE ENEMY IS DEAD
@@ -1917,10 +1990,22 @@ void bossloop()
 				{
 					cout << "He deals " << (TE.ATK - varias.DEF) << " Points of damage to you!" << endl;
 					varias.minusX(varias.HitPoints, (TE.ATK - varias.DEF));
+					if (varias.skill == 3)
+					{
+						lineBreak(1);
+						cout << "Your skill 'Wall of Pain' activates, and you ruthlessly punch Jarl as they strike you." << endl;
+						TE.minusX(TE.HP, (4));
+					}
 				}
 				else //IF YOU'RE BEEFY ENOUGH, TAKE NO DMG
 				{
 					cout << "Your armor holds strong, and you take no damage!" << endl;
+					if (varias.skill == 3)
+					{
+						lineBreak(1);
+						cout << "Your skill 'Wall of Pain' activates, and you ruthlessly punch Jarl as they strike you." << endl;
+						TE.minusX(TE.HP, (4));
+					}
 					Sleep(500);
 					cout << "Your armor weakens as it takes the brunt of the attack." << endl;
 					varias.minusX(varias.DEF, 1); //STACKING ARMOR DOESNT WORK
@@ -2063,6 +2148,12 @@ void bossloop()
 
 void fightloop()
 {
+	if (varias.skill == 2)
+	{
+		lineBreak(1);
+		cout << "Your skill 'Mana Spring' activates, and you replenish some of your mana!" << endl;
+		varias.addX(varias.MP, (((varias.MAG * 5) - varias.MP) / 20));//HEAL 5% OF MISSING MP
+	}
 	lineBreak(1);
 	cout << "What will you do?" << endl << "1 - Attack!" << endl << "2 - Magic!" << endl << "3 - item!" << endl;
 	cin >> choice;
@@ -2105,6 +2196,23 @@ void fightloop()
 		cout << "The enemy takes damage from poison!" << endl;
 		TE.minusX(TE.HP, (5*TE.poisonpower));
 	}
+
+	//ASSASSIN
+	if ((varias.skill == 1) && (TE.HP <= 5))
+	{
+		lineBreak(1);
+		cout << "Your skill 'Assassin' kicks in, and you land a killing blow on the weakened enemy!" << endl;
+		TE.HP = 0;
+	}
+
+	//CRUSH
+	if ((varias.skill == 4) && ((varias.HP * 1.5) > TE.THP))
+	{
+		lineBreak(1);
+		cout << "Your skill 'Crush' kicks in, and you slam the enemy with your shoulder!" << endl;
+		TE.minusX(TE.HP, (varias.HP / 5));
+	}
+
 	//DEBUFFS
 	if(TE.HP <= 0) //IF THE ENEMY IS DEAD
 	{
@@ -2192,6 +2300,12 @@ void fightloop()
 			if ((TE.ATK - varias.DEF) >= 0)
 			{
 				cout << "It deals " << (TE.ATK - varias.DEF) << " Points of damage to you!" << endl;
+				if (varias.skill == 3)
+				{
+					lineBreak(1);
+					cout << "Your skill 'Wall of Pain' activates, and you ruthlessly punch the enemy as they strike you." << endl;
+					TE.minusX(TE.HP, (4));
+				}
 				varias.minusX(varias.HitPoints, (TE.ATK - varias.DEF));
 				if (TE.trait == 3 && varias.poison == false)
 				{
@@ -2202,6 +2316,12 @@ void fightloop()
 			else //IF YOU'RE BEEFY ENOUGH, TAKE NO DMG
 			{
 				cout << "Your armor holds strong, and you take no damage!" << endl;
+				if (varias.skill == 3)
+				{
+					lineBreak(1);
+					cout << "Your skill 'Wall of Pain' activates, and you ruthlessly punch the enemy as they strike you." << endl;
+					TE.minusX(TE.HP, (4));
+				}
 				if (TE.trait == 3 && varias.poison == false)
 				{
 					cout << "You are poisoned!" << endl;
