@@ -21,6 +21,8 @@ bool cave2 = false;
 bool cave3 = false;
 bool line[4] = { true, false, false, false };
 bool lines[5] = { true, true, true, true, true };
+bool consent;
+string consentchoice;
 
 int levelone[5][5] = { 1,  2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25};
 bool levelonebool[5][5] = { true, true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true };
@@ -174,6 +176,30 @@ void sectionRead(int choice, int a, int b) //after writing out this 'for' loop a
 		};
 	}
 };
+
+void consentor()
+{
+	cout << "This game is being used in an official capacity to collect results for a dissertation project." << endl;
+	cout << "Your results may be used in this study, and you may be quoted, although this will both be anonymous." << endl;
+	lineBreak(1);
+	cout << "Do you consent to this? Please type 'yes' or 'no'." << endl;
+	cin >> consentchoice;
+	if (consentchoice == "yes")
+	{
+		cout << "Thank you. The game will now begin." << endl;
+		consent = true;
+	}
+	else if (consentchoice == "no")
+	{
+		cout << "Thank you. The test is now over." << endl;
+		consent = false;
+	}
+	else
+	{
+		cout << "I did not recognise that." << endl;
+		consentor();
+	}
+}
 
 //PREP FUNCTIONS
 
@@ -489,7 +515,7 @@ void collect()
 	cout << "Kills: " << varias.kills << endl << "Gold: " << varias.GP << endl << "Lore: " << varias.lore << "/40 points" << endl << "Map Clear: " << varias.mapperc << "/110" << endl;
 	ofstream Results;
 	Results.open("Results.txt");
-	Results << "K:" << varias.kills << "G:" << varias.GP << "L:" << varias.lore << endl << "MP:" << varias.mapperc << "SW:" << varias.swordchoice << endl;
+	Results << "Consent: " << consentchoice <<" K:" << varias.kills << " G:" << varias.GP << " L:" << varias.lore << endl << " MP:" << varias.mapperc << " SW:" << varias.swordchoice << endl;
 	Results.close();
 }
 
@@ -3122,7 +3148,9 @@ void finalboss()
 
 int main()
 {
-	varias.TESTER = 1;
+	varias.TESTER = 0;
+	consentor();
+	lineBreak(2);
 	cout << "Sword Quest" << endl;
 	lineBreak(2);
 	standinhero();
