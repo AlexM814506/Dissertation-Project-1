@@ -1,0 +1,2 @@
+Consent: yes K:27 G:400 L:17
+ MP:48 SW:4
