@@ -3867,7 +3867,7 @@ int main()
 {
 	varias.TESTER = 1; //0 FOR TESTING
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);//for colour
-	consentor();
+	//consentor();
 	lineBreak(2);
 	cout << "Sword Quest" << endl;
 	lineBreak(2);
